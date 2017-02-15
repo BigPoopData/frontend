@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Graphtest</title>
+    <link href="css/bulma.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/charts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="js/waypoint.js"></script>
+    <script src="js/countUp.js"></script>
+    <script src="js/countUp-jquery.js"></script>
+    <script src="js/makegraph.js"></script>
+    <script src="js/getdata.js"></script>
+    <script src="js/countuptime.js"></script>
+
+
+</head>
+
+<body>
+    <div class="se-pre-con"></div>
+
+    <section class="hero is-fullheight statuscolor" id="header">
+        <!-- Hero header: will stick at the top -->
+        <div class="hero-head">
+            <header class="nav">
+                <div class="container">
+                    <div class="nav-left">
+                        <a class="nav-item">
+                            <!-- <span id="logo" alt="Logo"></span> -->
+                            <img src="https://cdn.shopify.com/s/files/1/1061/1924/files/Poop_Emoji.png?9898922749706957214" alt="Logo">
+                            <div class="logo-text">Big Poop Data (.io)</div>
+                        </a>
+                    </div>
+                    <span class="nav-toggle">
+                      <span></span>
+                    <span></span>
+                    <span></span>
+                    </span>
+                    <div class="nav-right nav-menu">
+                        <a class="nav-item is-active colorwhite">
+                            Status
+                        </a>
+                        <a class="nav-item colorwhite">
+                            Graph1
+                          </a>
+                        <a class="nav-item colorwhite">
+                            Graph2
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered statussize">
+                <h1 class="status colorwhite toptext" id="status">
+                    Occupied
+                </h1>
+                <h2 class=" colorwhite toptext">
+                    Has been this way for about <span id="minutes" class="toptext"></span><span id="seconds" class="toptext"></span>
+                </h2>
+                <h2 class="colorwhite toptext" id="statusmessage ">
+                    Give them some time, they just got in
+                </h2>
+
+                <h2 class="toptext topdescription">
+                    Lorem ipsum dolor sit amet
+                </h2>
+                <h2 class="toptext topdescriptiontext">
+                    Lorem ipsum dolor sit amet. Albert mag gerne Kuchen und ich schreibe jetzt statt lorem ipsum lol! Hier sollte dann langsam ein Zeilenumbruch kommen. Ah da is er ja! Der D-Wagen! Wenn ich mich beeile erwische ich ihn noch.
+                </h2>
+
+
+                <a href="" ><h2 id="scrolltolearntext">Scroll to learn more</h2></a>
+
+
+            </div>
+        </div>
+
+    </section>
+    <section id="average">
+        <div class="columns" id="main-content">
+            <div class="column">
+                <h1>Averagetest</h1> proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+            <div class="column">
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="watersavings">
+        <h1><span id="waternumbers">0 </span> Litres</h1>
+          <h2>
+                 Water have been flushed
+          </h2>
+    </section>
+
+    <section class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Big Poop Data</strong> by <a href="">Big Poop Corp.</a>. The source code is licensed
+                    <a href="https://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

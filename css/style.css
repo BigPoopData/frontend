@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+section {
+    position: relative;
+    padding: 0 15%;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width:768px) {
+    section {
+        padding: 0 15%;
+    }
+}
+
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../img/Preloader_5.gif) center no-repeat #fff;
+}
+
+.nav {
+    box-shadow: 0 0px 0 rgba(219, 219, 219, 0.3) !important;
+}
+
+div #main-content {
+    display: none;
+}
+
+#logo{
+  background-image: url('../img/logo.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.logo-text {
+    padding: 10%;
+    color: white;
+}
+
+.title {
+  font-weight: 700 !important;
+}
+
+
+h1 {
+    font-size: 4.2em;
+    font-weight: bold;
+}
+
+
+.statuscolor {
+    background-color: white;
+    transition: all 0.5s ease;
+
+}
+
+.statussize h1 {
+    font-size: 13vw;
+    border-bottom: solid 2px #000000;
+      padding-bottom: 3px;
+
+}
+
+
+.colorwhite {
+    color: white !important;
+}
+
+section {
+    padding-top: 2.5%;
+}
+
+#average {
+    height: 100%;
+}
+
+#statusmessage {
+    transition: all 0.5s ease;
+}
+
+#watersavings {
+  text-align: center;
+}
+
+.toptext {
+  font-weight: bold !important;
+  text-align: left !important;
+}
+
+.topdescription {
+  margin-top: 10%;
+}
+
+.topdescriptiontext {
+  color: #fff;
+}
+
+#scrolltolearntext {
+  padding-top: 10%;
+  color: #fff;
+  font-size: 1.25rem;
+}
