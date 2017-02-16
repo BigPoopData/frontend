@@ -77,6 +77,14 @@ h1 {
     font-weight: bold;
 }
 
+h2 {
+  font-size: 1.4em;
+}
+
+#averagetest {
+  font-size: 4vw;
+}
+
 
 .statuscolor {
     background-color: white;
@@ -86,8 +94,7 @@ h1 {
 
 .statussize h1 {
     font-size: 13vw;
-    border-bottom: solid 2px #000000;
-      padding-bottom: 3px;
+    padding-bottom: 3px;
 
 }
 
@@ -101,7 +108,7 @@ section {
 }
 
 #average {
-    height: 100%;
+    width: 100%;
 }
 
 #statusmessage {
@@ -125,8 +132,14 @@ section {
   color: #fff;
 }
 
+#header {
+}
+
+
 #scrolltolearntext {
-  padding-top: 10%;
+  text-align: center;
   color: #fff;
   font-size: 1.25rem;
+  display: table-cell;
+  vertical-align: bottom;
 }

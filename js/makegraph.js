@@ -60,7 +60,7 @@ function drawgraph1(array, timestamp) {
                     }
                 }]
             },
-            responsive: true,
+            responsive: false,
             legend: {
                 display: false,
             },

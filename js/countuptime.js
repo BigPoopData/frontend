@@ -17,11 +17,29 @@ function setTimerDurationElapsed(timeintevalarg) {
 setInterval(function() {
     $("#seconds").html(++sec % 60 + ' Seconds');
     if (sec > 60) {
-        $("#minutes").html(pad(parseInt(sec / 60, 10)) + ' Minutes and ');
+        $("#minutes").html(pad(parseInt(sec / 60 % 60, 10)) + ' Minutes and ');
     }
     else{
         $("#minutes").html('');
     }
+
+    if (sec > 3600){
+        $("#hours").html(pad(parseInt(sec / 60 / 60, 10)) + ' Hour, ');
+    }
+
+    else{
+        $("#hours").html('');
+    }
+
+
+    if (sec > 7200){
+        $("#hours").html(pad(parseInt(sec / 60 / 60, 10)) + ' Hours, ');
+    }
+
+    else{
+        $("#hours").html('');
+    }
+
 
 
     switch (sec) {
