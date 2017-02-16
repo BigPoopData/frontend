@@ -44,7 +44,7 @@ setInterval(function() {
 
     switch (sec) {
         case 30:
-            $("#statusmessage").html('This could take longer...');
+            $("#statusmessage").html('"This could take longer..."');
             break;
         case 120:
             $("#statusmessage").html('Stay patient! We know you can do it!');

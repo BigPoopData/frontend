@@ -1,4 +1,4 @@
-function drawgraph1(array, timestamp) {
+function drawgraph1(array, timestamp, barchartcolor) {
     var lineChartData = {
 
         labels: timestamp,
@@ -16,7 +16,7 @@ function drawgraph1(array, timestamp) {
             type: 'bar',
             label: 'Bar Component',
             data: array,
-            backgroundColor: currentcolor,
+            fillColor: barchartcolor
         }]
 
     };
@@ -60,7 +60,7 @@ function drawgraph1(array, timestamp) {
                     }
                 }]
             },
-            responsive: false,
+            responsive: true,
             legend: {
                 display: false,
             },

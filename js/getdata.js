@@ -57,7 +57,6 @@ getData.onmessage = function(msg) {
             datetimestamp = Date.parse(dataset.lastEvent.timestamp);
             var dateinterval = daterightnow - datetimestamp;
             var timedurationelapsed = Math.floor(dateinterval/1000);
-            drawgraph1(averagesObject, timestampsObject);
             break;
 
         case "sitzklo":
@@ -84,6 +83,7 @@ getData.onmessage = function(msg) {
             currentcolorlessopacity = closedcolor + alphadown;
     }
 
+    drawgraph1(averagesObject, timestampsObject, currentcolor);
 
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");
