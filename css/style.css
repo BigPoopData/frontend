@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +10,8 @@ html, body {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
 section {
@@ -56,10 +55,10 @@ div #main-content {
     display: none;
 }
 
-#logo{
-  background-image: url('../img/logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
+#logo {
+    background-image: url('../img/logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .logo-text {
@@ -68,9 +67,8 @@ div #main-content {
 }
 
 .title {
-  font-weight: 700 !important;
+    font-weight: 700 !important;
 }
-
 
 h1 {
     font-size: 4.2em;
@@ -78,26 +76,22 @@ h1 {
 }
 
 h2 {
-  font-size: 1.4em;
+    font-size: 1.4em;
 }
 
 #averagetest {
-  font-size: 4vw;
+    font-size: 4vw;
 }
-
 
 .statuscolor {
     background-color: white;
     transition: all 0.5s ease;
-
 }
 
 .statussize h1 {
     font-size: 13vw;
     padding-bottom: 3px;
-
 }
-
 
 .colorwhite {
     color: white !important;
@@ -116,38 +110,56 @@ section {
 }
 
 #watersavings {
-  text-align: center;
+    text-align: center;
 }
 
 .statusmessage {
-  font-size: 2.4em;
+    font-size: 2.4em;
 }
 
 .toptext {
-  font-weight: bold !important;
-  text-align: left !important;
+    font-weight: bold !important;
+    text-align: left !important;
 }
 
 .topdescription {
-  margin-top: 10%;
+    margin-top: 10%;
 }
 
 .topdescriptiontext {
-  color: #fff;
+    color: #fff;
 }
 
-#header {
-}
-
+#header {}
 
 #scrolltolearntext {
-  text-align: center;
-  color: #fff;
-  font-size: 1.25rem;
-  display: table-cell;
-  vertical-align: bottom;
+    text-align: center;
+    color: #fff;
+    font-size: 1.25rem;
+    display: table-cell;
+    vertical-align: bottom;
 }
 
 #elapsedtime {
-  font-weight: 300 !important;
+    font-weight: 300 !important;
 }
+
+.ct-label {
+    -webkit-transform: rotate(-40deg);
+}
+
+.chartWrapper {
+    height: 300px;
+    width: 500px;
+    /*border: 1px black solid;*/
+    overflow-y: hidden;
+    overflow: scroll;
+}
+
+.chartWrapper::-webkit-scrollbar {
+    display: none;
+}
+.chartWrapper > div {
+    width: 5000px;
+      max-height: 100%;
+     }

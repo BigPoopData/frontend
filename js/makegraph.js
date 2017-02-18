@@ -1,6 +1,5 @@
 function drawgraph1(array, timestamp, barchartcolor) {
     var lineChartData = {
-
         labels: timestamp,
         scaleShowVerticalLines: true,
         datasets: [{
@@ -16,51 +15,41 @@ function drawgraph1(array, timestamp, barchartcolor) {
             type: 'bar',
             label: 'Bar Component',
             data: array,
-            fillColor: barchartcolor
+            borderColor: barchartcolor,
         }]
 
     };
 
     Chart.defaults.global.legend.display = false;
 
-
-
-    var ctx = document.getElementById("canvas").getContext("2d");
+    var ctx = document.getElementById("myChart");
     var myNewChart = new Chart(ctx, {
         type: "bar",
         data: lineChartData,
         options: {
             scales: {
                 xAxes: [{
+                //     afterTickToLabelConversion: function(data){
+                //    var xLabels = data.ticks;
+                //    xLabels.forEach(function (labels, i) {
+                //        if (i % 2 == 1){
+                //            xLabels[i] = '';
+                //        }
+                //    });},
+                    // ticks: {
+                    //     autoSkip: true,
+                    //     maxTicksLimit: 20
+                    // },
 
-                    afterTickToLabelConversion: function(data){
-
-
-                   var xLabels = data.ticks;
-
-                   xLabels.forEach(function (labels, i) {
-                       if (i % 2 == 1){
-                           xLabels[i] = '';
-                       }
-                   });},
-
-
-                    ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 20
-                    },
                     gridLines: {
                         display: false
-                    }
-
-                }],
+                    }}],
                 yAxes: [{
                     gridLines: {
                         display: false
-                    }
-                }]
-            },
+                    }}]},
             responsive: true,
+            maintainAspectRatio: false,
             legend: {
                 display: false,
             },

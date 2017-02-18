@@ -8,16 +8,20 @@
     <title>Graphtest</title>
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
     <script src="js/charts.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <!-- <script src="js/dist/chartist.min.js"></script> -->
+    <link rel="stylesheet" href="js/dist/chartist.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
     <script src="js/waypoint.js"></script>
     <script src="js/countUp.js"></script>
     <script src="js/countUp-jquery.js"></script>
     <script src="js/makegraph.js"></script>
     <script src="js/getdata.js"></script>
     <script src="js/countuptime.js"></script>
-
-
 </head>
 
 <body>
@@ -89,28 +93,44 @@
                 <h1 id="averagetest">Averagetest</h1> proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
             <div class="column">
-                <canvas id="canvas"></canvas>
+                <div class="chartWrapper">
+                    <div class="chartcontent">
+                        <!-- <div class="chartAreaWrapper"> -->
+                        <canvas id="myChart"></canvas>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <section id="watersavings">
         <h1><span id="waternumbers">0 </span> Litres</h1>
-          <h2>
+        <h2>
                  Water have been flushed
           </h2>
     </section>
 
-    <!-- <section class="footer">
+    <section class="footer">
         <div class="container">
             <div class="content has-text-centered">
                 <p>
-                    <strong>Big Poop Data</strong> by <a href="">Big Poop Corp.</a>. The source code is licensed
-                    <a href="https://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                    <strong>Big Poop Data</strong> by <a href="">Big Poop Corp.</a> The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
                 </p>
             </div>
         </div>
-    </section> -->
+    </section>
+    <script>
+        // (function($) {
+        //     $(window).on("load", function() {
+        //         $(".chartcontent").mCustomScrollbar({
+        //             axis:"x", // vertical and horizontal scrollbar
+        //             setWidth: "100%"
+        //         });
+        //     });
+        // })(jQuery);
+    </script>
 </body>
 
 </html>
