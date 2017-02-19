@@ -84,6 +84,7 @@ getData.onmessage = function(msg) {
     }
 
     drawgraph1(averagesObject, timestampsObject, currentcolor);
+    drawgraph2(averagesObject, timestampsObject, currentcolor);
 
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");

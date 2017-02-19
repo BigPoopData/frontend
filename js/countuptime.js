@@ -5,10 +5,11 @@ var firstscroll = 0;
 var sec = 'getting data';
 
 function setTimerDurationElapsed(timeintevalarg) {
-     sec = timeintevalarg;
-     console.log("sec changed --> " + sec);
+    sec = timeintevalarg;
+    console.log("sec changed --> " + sec);
 }
-    function pad(val) {
+
+function pad(val) {
 
     return val;
 }
@@ -18,40 +19,54 @@ setInterval(function() {
     $("#seconds").html(++sec % 60 + ' Seconds');
     if (sec > 60) {
         $("#minutes").html(pad(parseInt(sec / 60 % 60, 10)) + ' Minutes and ');
-    }
-    else{
+    } else {
         $("#minutes").html('');
     }
 
-    if (sec > 3600){
+    if (sec > 3600) {
         $("#hours").html(pad(parseInt(sec / 60 / 60, 10)) + ' Hour, ');
-    }
-
-    else{
+    } else {
         $("#hours").html('');
     }
 
 
-    if (sec > 7200){
+    if (sec > 7200) {
         $("#hours").html(pad(parseInt(sec / 60 / 60, 10)) + ' Hours, ');
-    }
-
-    else{
+    } else {
         $("#hours").html('');
     }
 
 
+    if (currentstatus) {
+        switch (true) {
+            case (sec < 30):
+                $("#statusmessage").html('"Go on, its free!"');
+                break;
+            case (sec < 120):
+                $("#statusmessage").html('"What are you waiting for"');
+                break;
+            case (sec < 500):
+                $("#statusmessage").html('"Come on in, theres even wifi"');
+                break;
+            case (sec < 800):
+                $("#statusmessage").html('"Testmessage"');
+                break;
 
-    switch (sec) {
-        case 30:
-            $("#statusmessage").html('"This could take longer..."');
-            break;
-        case 120:
-            $("#statusmessage").html('Stay patient! We know you can do it!');
-            break;
-        case 500:
-            $("#statusmessage").html('Really taking his/her time!');
-            break;
+        }
+
+    } else if (!currentstatus) {
+        switch (sec) {
+            case 30:
+                $("#statusmessage").html('"This could take longer..."');
+                break;
+            case 120:
+                $("#statusmessage").html('Stay patient! We know you can do it!');
+                break;
+            case 500:
+                $("#statusmessage").html('Really taking his/her time!');
+                break;
+
+        }
     }
 }, 1000);
 
@@ -66,7 +81,7 @@ function water() {
           prefix: '',
           suffix: ''
     };
-    var waternum = new CountUp(waterid, 0, waterusage, 0, 2.5, options);
+    var waternum = new CountUp(waterid, 0, waterusage, 0, 1, options);
     waternum.start();
 }
 
@@ -77,7 +92,7 @@ $(document).ready(function() {
         handler: function(direction) {
             if (direction === 'down' && firstscroll === 0) {
                 water();
-                firstscroll ++;
+                firstscroll++;
             }
         },
         offset: '75%',
