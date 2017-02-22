@@ -83,9 +83,11 @@ getData.onmessage = function(msg) {
             currentcolor = closedcolor + alphafull;
             currentcolorlessopacity = closedcolor + alphadown;
     }
+    var graphcolor = currentcolorlessopacity;
 
-    drawgraph1(averagesObject, timestampsObject, currentcolor);
-    drawgraph2(averagesObject, timestampsObject, currentcolor);
+
+    drawgraph1(averagesObject, timestampsObject, graphcolor);
+    drawgraph2(averagesObject, timestampsObject, graphcolor);
 
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");

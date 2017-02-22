@@ -22,7 +22,6 @@ function drawgraph1(array, timestamp, barchartcolor) {
             label: 'Bar Component',
             data: array,
             backgroundColor: barchartcolor,
-
         }]
 
     };
@@ -67,6 +66,7 @@ function drawgraph1(array, timestamp, barchartcolor) {
         }
 
     });
+
 }
 
 function drawgraph2(array, timestamp, barchartcolor) {
@@ -86,7 +86,7 @@ function drawgraph2(array, timestamp, barchartcolor) {
             type: 'bar',
             label: 'Bar Component',
             data: array,
-            borderColor: barchartcolor,
+            backgroundColor: barchartcolor,
         }]
 
     };

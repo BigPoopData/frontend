@@ -81,7 +81,13 @@ h2 {
 
 #averagetest {
     font-size: 4vw;
+
 }
+
+#intervalstest {
+    font-size: 4vw;
+}
+
 
 .statuscolor {
     background-color: white;
@@ -103,7 +109,7 @@ section {
 
 #average {
     width: 100%;
-    /*min-height: 100%;*/
+    min-height: 100%;
 
 }
 
@@ -114,10 +120,13 @@ section {
 #watersavings {
     text-align: center;
     min-height: 80vh;
-    background-image: url('../img/bg1.jpg');
-    background-position: bottom;
+    background: url("");
+    background-color: #A3AACC;
+    /*background-image: url('../img/bg1.jpg');*/
+    background-image: url('../img/toilet.svg');
+    background-position: top;
     background-size: cover;
-    
+
 }
 
 .statusmessage {
@@ -157,7 +166,7 @@ section {
 
 .chartWrapper {
     box-sizing: border-box;
-    height: 20vh;
+    height: 50vh;
     width: 35vw;
     /*border: 1px black solid;*/
     overflow-y: hidden;
@@ -170,7 +179,13 @@ section {
 .chartWrapper > div {
     width: 5000px;
     max-height: 100%;
-     }
+}
 
-#watersavings {
+.underline {
+    height: 4px;
+    margin-top: -1%;
+}
+
+#intervals{
+    min-height: 100%;
 }

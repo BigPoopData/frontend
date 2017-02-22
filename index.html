@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <!-- <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script> -->
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <!-- <script src="js/dist/chartist.min.js"></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,13 +12,11 @@
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="js/charts.min.js"></script>
-    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-    <!-- <script src="js/dist/chartist.min.js"></script> -->
     <link rel="stylesheet" href="js/dist/chartist.min.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-
     <script src="js/waypoint.js"></script>
     <script src="js/countUp.js"></script>
     <script src="js/countUp-jquery.js"></script>
@@ -34,9 +35,9 @@
                 <div class="container">
                     <div class="nav-left">
                         <a class="nav-item">
-                            <!-- <span id="logo" alt="Logo"></span> -->
-                            <img src="https://cdn.shopify.com/s/files/1/1061/1924/files/Poop_Emoji.png?9898922749706957214" alt="Logo">
-                            <div class="logo-text">Big Poop Data (.io)</div>
+                            <span id="logo" alt="Logo"></span>
+                            <!-- <img src="https://cdn.shopify.com/s/files/1/1061/1924/files/Poop_Emoji.png?9898922749706957214" alt="Logo">
+                            <div class="logo-text">Big Poop Data (.io)</div> -->
                         </a>
                     </div>
                     <span class="nav-toggle">
@@ -87,10 +88,12 @@
         </div>
 
     </section>
-    <section id="average">
+    <section class="foo" id="average">
         <div class="columns" id="main-content">
             <div class="column">
-                <h1 id="averagetest">Averagetest</h1> proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1 id="averagetest">Averagetest</h1>
+                <hr class="underline" width="200" size="10" align="left" />
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
             <div class="column">
                 <div class="chartWrapper">
@@ -105,17 +108,19 @@
         </div>
     </section>
 
-    <section id="watersavings">
+    <section class="foo" id="watersavings">
         <h1><span id="waternumbers">0 </span> Litres</h1>
         <h2>
                  Water have been flushed
           </h2>
     </section>
 
-    <section id="Intervals">
+    <section class="foo" id="intervals">
         <div class="columns">
             <div class="column">
-                <h1 id="intervalstest">Intervalstest</h1> proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1 id="intervalstest">Intervalstest</h1>
+                <hr class="underline" width="200" size="10" align="left" /> 
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
             <div class="column">
                 <div class="chartWrapper">
@@ -141,14 +146,15 @@
         </div>
     </section>
     <script>
-        // (function($) {
-        //     $(window).on("load", function() {
-        //         $(".chartcontent").mCustomScrollbar({
-        //             axis:"x", // vertical and horizontal scrollbar
-        //             setWidth: "100%"
-        //         });
-        //     });
-        // })(jQuery);
+        (function($) {
+            $(window).on("load", function() {
+                $(".chartwrapper").mCustomScrollbar({
+                    axis: "x", // vertical and horizontal scrollbar
+                    setWidth: false,
+
+                });
+            });
+        })(jQuery);
     </script>
 </body>
 

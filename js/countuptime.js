@@ -98,3 +98,7 @@ $(document).ready(function() {
         offset: '75%',
     });
 });
+
+window.sr = ScrollReveal({ reset: true });
+
+sr.reveal('.foo', { duration: 200 });
