@@ -13,6 +13,7 @@ var alphadown = '0.3)';
 var datetimestamp = new Date();
 
 
+
 var getData = new WebSocket("wss://metaklo.nico-rameder.at:8000/ws");
 
 

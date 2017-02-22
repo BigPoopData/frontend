@@ -55,14 +55,14 @@ setInterval(function() {
         }
 
     } else if (!currentstatus) {
-        switch (sec) {
-            case 30:
+        switch (true) {
+            case (sec < 30):
                 $("#statusmessage").html('"This could take longer..."');
                 break;
-            case 120:
+                case (sec < 120):
                 $("#statusmessage").html('Stay patient! We know you can do it!');
                 break;
-            case 500:
+                case (sec < 500):
                 $("#statusmessage").html('Really taking his/her time!');
                 break;
 
