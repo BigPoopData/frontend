@@ -95,7 +95,7 @@ $(document).ready(function() {
                 firstscroll++;
             }
         },
-        offset: '75%',
+        offset: '50%',
     });
 });
 
