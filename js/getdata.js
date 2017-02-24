@@ -15,7 +15,11 @@ var alphafull = '1.0)';
 var alphadown = '0.3)';
 var datetimestamp = new Date();
 var graphcolor;
+var activeLabelTimestamps = [];
+var activeLabelAverages = [];
 
+
+var months = new Array(12);
 
 //connect to websocket
 var getData = new WebSocket("wss://metaklo.nico-rameder.at:8000/ws");
@@ -103,8 +107,8 @@ getData.onmessage = function(msg) {
     graphcolor = currentcolorlessopacity;
 
 
-    drawgraph2(averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
-    drawgraph1(averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
+    drawGraph2(averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
+    drawGraph1(averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
 
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");

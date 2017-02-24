@@ -1,4 +1,4 @@
-function drawgraph1(array, timestamp, barchartcolor) {
+function drawGraph1(dates, timestamp, barchartcolor) {
     console.log(barchartcolor);
     var lineChartData = {
         labels: timestamp,
@@ -8,7 +8,7 @@ function drawgraph1(array, timestamp, barchartcolor) {
             //     scaleShowVerticalLines: true,
             //     type: 'line',
             //     label: 'Average Time in Minutes',
-            //     data: array,
+            //     data: dates,
             //     showLine: true,
             //     borderColor: currentcolor,
             //     borderWidth: 1,
@@ -19,7 +19,7 @@ function drawgraph1(array, timestamp, barchartcolor) {
             scaleShowVerticalLines: false,
             type: 'bar',
             label: 'Bar Component',
-            data: array,
+            data: dates,
             backgroundColor: barchartcolor,
             hoverBackgroundColor: currentcolor
         }]
@@ -65,15 +65,30 @@ function drawgraph1(array, timestamp, barchartcolor) {
                 var activeElement = myNewChart.getElementAtEvent(evt);
                 var activeLabel = activeElement[0]._chart.config.data.labels[activeElement[0]._index];
                 var activeElementValue = activeElement[0]._chart.config.data.datasets[activeElement[0]._datasetIndex].data[activeElement[0]._index];
-                console.log(activeLabel);
-                console.log(activeElementValue);
+                var activeElementTimestamp = [];
+                // console.log(activeLabel);
+                // console.log(activeElementValue);
+                for(var l = 0; l < averagesPerDayObject.length; l ++){
+                    var check = moment(averagesPerDayObject[l].timestamp);
+                    var month = check.format('MMM');
+                    var day   = check.format('D');
+                    var year  = check.format('YYYY');
+
+                    activeElementTimestamp.push(month + " " + year);
+                    if(activeElementTimestamp[l] == activeLabel){
+                        activeLabelTimestamps.push(averagesPerDayObject[l].timestamp);
+                        activeLabelAverages.push(averagesPerDayMinutesObject[l]);
+                    }
+                 }
+
                 myNewChart.destroy();
-                customgraph(averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
-                // drawgraph1(array, timestamp, barchartcolor);
+                customgraph(activeLabelAverages, activeLabelTimestamps, graphcolor);
+                // drawgraph1(dates, timestamp, barchartcolor);
             },
 
             scales: {
                 xAxes: [{
+                    borderWidth: 0,
                     //     afterTickToLabelConversion: function(data){
                     //    var xLabels = data.ticks;
                     //    xLabels.forEach(function (labels, i) {
@@ -87,12 +102,18 @@ function drawgraph1(array, timestamp, barchartcolor) {
                     // },
 
                     gridLines: {
-                        display: false
+                        display: false,
+                        drawBorder: false
                     }
                 }],
                 yAxes: [{
+                    borderWidth: 4,
                     gridLines: {
-                        display: false
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        beginAtZero: true
                     }
                 }]
             },
@@ -105,8 +126,7 @@ function drawgraph1(array, timestamp, barchartcolor) {
     });
 }
 
-function drawgraph2(array, timestamp, barchartcolor) {
-    console.log(barchartcolor);
+function drawGraph2(dates, timestamp, barchartcolor) {
     var lineChartData = {
         labels: timestamp,
         scaleShowVerticalLines: true,
@@ -115,7 +135,7 @@ function drawgraph2(array, timestamp, barchartcolor) {
             //     scaleShowVerticalLines: true,
             //     type: 'line',
             //     label: 'Average Time in Minutes',
-            //     data: array,
+            //     data: dates,
             //     showLine: true,
             //     borderColor: currentcolor,
             //     borderWidth: 1,
@@ -127,7 +147,7 @@ function drawgraph2(array, timestamp, barchartcolor) {
 
             type: 'bar',
             label: 'Bar Component',
-            data: array,
+            data: dates,
             backgroundColor: barchartcolor,
         }]
 
@@ -162,8 +182,7 @@ function drawgraph2(array, timestamp, barchartcolor) {
     });
 }
 
-function customgraph(array, timestamp, barchartcolor) {
-    console.log(barchartcolor);
+function customgraph(dates, timestamp, barchartcolor) {
     var lineChartData = {
         labels: timestamp,
         scaleShowVerticalLines: true,
@@ -172,7 +191,7 @@ function customgraph(array, timestamp, barchartcolor) {
             //     scaleShowVerticalLines: true,
             //     type: 'line',
             //     label: 'Average Time in Minutes',
-            //     data: array,
+            //     data: dates,
             //     showLine: true,
             //     borderColor: currentcolor,
             //     borderWidth: 1,
@@ -184,7 +203,7 @@ function customgraph(array, timestamp, barchartcolor) {
 
             type: 'bar',
             label: 'Bar Component',
-            data: array,
+            data: dates,
             backgroundColor: barchartcolor,
         }]
 
@@ -200,12 +219,14 @@ function customgraph(array, timestamp, barchartcolor) {
             scales: {
                 xAxes: [{
                     gridLines: {
-                        display: false
+                        display: false,
+                        drawBorder: false
                     }
                 }],
                 yAxes: [{
                     gridLines: {
-                        display: false
+                        display: false,
+                        drawBorder: false
                     }
                 }]
             },

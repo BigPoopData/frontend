@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script> -->
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <!-- <script src="js/dist/chartist.min.js"></script> -->
     <meta charset="UTF-8">
@@ -12,10 +11,11 @@
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="js/charts.min.js"></script>
-    <link rel="stylesheet" href="js/dist/chartist.min.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="js/bulma.js"></script>
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/waypoint.js"></script>
     <script src="js/countUp.js"></script>
@@ -40,12 +40,12 @@
                             <div class="logo-text">Big Poop Data (.io)</div> -->
                         </a>
                     </div>
-                    <span class="nav-toggle">
-                      <span></span>
-                    <span></span>
-                    <span></span>
+                    <span class="nav-toggle" id="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </span>
-                    <div class="nav-right nav-menu">
+                    <div class="nav-right nav-menu" id="nav-menu">
                         <a class="nav-item is-active colorwhite">
                             Status
                         </a>

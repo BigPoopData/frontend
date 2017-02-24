@@ -51,6 +51,14 @@ section {
     box-shadow: 0 0px 0 rgba(219, 219, 219, 0.3) !important;
 }
 
+#nav-toggle:hover {
+    background-color: rgba(39, 174, 96,1.0);
+}
+
+.nav-item {
+    
+}
+
 div #main-content {
     display: none;
 }
@@ -128,11 +136,9 @@ section {
     background-position: 75%;
     background-size: 80vh;
     background-repeat: no-repeat;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 2.5%;
     color: white;
     min-height: 100%;
-2ed
 }
 
 #watersavings h1 {
