@@ -127,6 +127,7 @@ function drawGraph1(dates, timestamp, barchartcolor) {
 }
 
 function drawGraph2(dates, timestamp, barchartcolor) {
+
     var lineChartData = {
         labels: timestamp,
         scaleShowVerticalLines: true,
