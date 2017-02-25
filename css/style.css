@@ -94,11 +94,11 @@ h2 {
     font-size: 1.4em;
 }
 
-#averagetest {
+#averagessheadline {
     font-size: 4vw;
 }
 
-#intervalstest {
+#intervalsheadline {
     font-size: 4vw;
 }
 
@@ -183,8 +183,6 @@ section {
 .chartWrapper {
     height: 60vh;
     /*border: 1px black solid;*/
-    overflow-y: hidden;
-    overflow: scroll;
     resize: both;
     width: 100%;
 }
@@ -220,12 +218,4 @@ section {
 
 section {
     /*min-height: 100%;*/
-}
-
-.colimnswrap {
-    position: relative;
-}
-
-#mychart {
-    cursor: pointer;
 }

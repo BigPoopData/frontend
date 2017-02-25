@@ -36,7 +36,6 @@ setInterval(function() {
         $("#hours").html('');
     }
 
-
     if (currentstatus) {
         switch (true) {
             case (sec < 30):

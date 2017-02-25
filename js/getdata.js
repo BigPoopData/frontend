@@ -5,6 +5,9 @@ var averagesPerDayObject = [];
 var averagesPerMonthObject = [];
 var averagesPerMonthMinutesObject = [];
 var averagesPerDayMinutesObject = [];
+var intervalsPerDayObject = [];
+var intervalsPerMonthObject = [];
+var intevervalsPerMonthTimestamps = [];
 var currentstatus;
 var waterusage = 0;
 var closedcolor = 'rgba(231, 76, 60, ';
@@ -15,8 +18,12 @@ var alphafull = '1.0)';
 var alphadown = '0.3)';
 var datetimestamp = new Date();
 var graphcolor;
-var activeLabelTimestamps = [];
+var activeAveragesLabelTimestamps = [];
 var activeLabelAverages = [];
+var activeLabelIntervals = [];
+var activeIntervalsLabelTimestamps = [];
+
+
 
 
 var months = new Array(12);
@@ -56,16 +63,20 @@ getData.onmessage = function(msg) {
     result = JSON.parse(msg.data);
     switch (result.name) {
         case "FullObject":
-            dataset = result;
+            // dataset = result;
             averagesPerDayObject = result.averageClosedDurationPerDay;
             averagesPerMonthObject = result.averageClosedDurationPerMonth;
             for (var j = 0; j < averagesPerMonthObject.length; j++) {
                 averagesPerMonthTimestamps.push(averagesPerMonthObject[j].timestamp);
                 averagesPerMonthMinutesObject.push(Math.floor((averagesPerMonthObject[j].average / 60) * 100) / 100);
+                intervalsPerMonthObject.push(averagesPerMonthObject[j].intervals);
+
             }
             for (var k = 0; k < averagesPerDayObject.length; k++) {
                 averagesPerDayTimestamps.push(averagesPerDayObject[k].timestamp);
                 averagesPerDayMinutesObject.push(Math.floor((averagesPerDayObject[k].average / 60) * 100) / 100);
+                intervalsPerDayObject.push(averagesPerDayObject[k].intervals);
+
             }
 
 
@@ -79,7 +90,8 @@ getData.onmessage = function(msg) {
         case "sitzklo":
             currentstatus = JSON.parse(msg.data).open;
             timedurationelapsed = 0;
-            myNewChart.destroy();
+            drawGraph1(true, averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
+            drawGraph2(true, averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
 
             break;
     }
@@ -92,6 +104,7 @@ getData.onmessage = function(msg) {
         case "true":
             $('#status').text('open');
             $('.statuscolor').css("background-color", opencolor + alphafull);
+            $('.underline').css("background-color", opencolor + alphadown);
             currentcolor = opencolor + alphafull;
             currentcolorlessopacity = opencolor + alphadown;
 
@@ -100,15 +113,17 @@ getData.onmessage = function(msg) {
         case "false":
             $('#status').text('occupied');
             $('.statuscolor').css("background-color", closedcolor + alphafull);
+            $('.underline').css("background-color", closedcolor + alphadown);
             currentcolor = closedcolor + alphafull;
             currentcolorlessopacity = closedcolor + alphadown;
     }
 
     graphcolor = currentcolorlessopacity;
 
+    drawGraph1(false, averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
+    drawGraph2(false, intervalsPerMonthObject, averagesPerMonthTimestamps, graphcolor);
 
-    drawGraph2(averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
-    drawGraph1(averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
+    // drawGraph2(true, averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
 
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");
