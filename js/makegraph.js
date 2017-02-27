@@ -158,7 +158,7 @@ function drawGraph2(destroyChart, dates, timestamp, barchartcolor) {
     };
 
     if (destroyChart) {
-        myNewChart2.destroy();
+        myNewChart3.destroy();
     } else {
 
         Chart.defaults.global.legend.display = false;
