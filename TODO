@@ -1,0 +1,11 @@
+Features:
+
+  * Total Intervals
+
+Errors & Bugs:
+
+  * Fix Hamburger menu - Color Problems
+  * Fix customgraph/2 not destroyed on status change
+  * Fix Closed-Open Ratio Graph Color
+  * Fix Closed-Open Ratio Graph on smaller Devices
+  * Graph font

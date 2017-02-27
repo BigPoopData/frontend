@@ -218,7 +218,7 @@ section {
 
 /*make a color different to fill-donut series*/
   .ct-chart-donut .ct-series-a .ct-slice-donut {
-      stroke: red;
+      stroke: rgba(46, 204, 113, 0.5);
       fill: transparent;
   }
   /*make b hidden*/
@@ -240,13 +240,19 @@ section {
 
   .openPercentage {
       font-weight: bold;
+      font-size: 2em;
   }
 
-  .closedopenWrapper {
-      /*height: 100vh;*/
-      padding-top: 5%;
-  }
 
 #chart-e1 {
-    height: 80%;
+    height: 40vh;
+}
+
+.closedopenheadline {
+    text-align: center !important;
+}
+
+.underlineCenter {
+    text-align: center;
+    width: 100%;
 }

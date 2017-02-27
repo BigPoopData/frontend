@@ -139,6 +139,14 @@ getData.onmessage = function(msg) {
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");
 
+    sr.reveal('.landingpage', {
+      duration: 500,
+      reset: false,
+      delay: 100,
+  }, 50);
+
+
+
 };
 
 window.onbeforeunload = function() {
