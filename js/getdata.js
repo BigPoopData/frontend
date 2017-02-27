@@ -130,19 +130,26 @@ getData.onmessage = function(msg) {
     drawGraph2(false, intervalsPerMonthObject, averagesPerMonthTimestamps, graphcolor);
     closedopenGraph();
 
+    var waypoint = new Waypoint({
+        element: document.getElementById('watersavings'),
+        handler: function(direction) {
+            if (firstscroll === 0) {
+                water();
+                firstscroll++;
+            }
+        },
+        offset: '50%',
+    });
+
+
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");
 
     sr.reveal('.landingpage', {
-      duration: 500,
-      reset: false,
-      delay: 100,
-  }, 50);
-
-
-
-
-
+        duration: 500,
+        reset: false,
+        delay: 100,
+    }, 50);
 };
 
 window.onbeforeunload = function() {

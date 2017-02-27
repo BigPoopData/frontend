@@ -107,14 +107,4 @@ $(document).ready(function() {
 
     sr.reveal('.closedopenreveal', sroptions, 200);
 
-    var waypoint = new Waypoint({
-        element: document.getElementById('watersavings'),
-        handler: function(direction) {
-            if (firstscroll === 0) {
-                water();
-                firstscroll++;
-            }
-        },
-        offset: '50%',
-    });
 });
