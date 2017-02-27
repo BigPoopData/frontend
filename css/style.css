@@ -70,7 +70,7 @@ div #main-content {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    width: 20vw;
+    width: 100%;
     height: 5vh;
 }
 
@@ -80,9 +80,10 @@ div #main-content {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    width: 20vw;
+    width: 100%;
     height: 5vh;
 }
+
 
 @media (max-width:480px) {
     #logo {
@@ -116,7 +117,7 @@ h2 {
 }
 
 .graphheadline {
-    font-size: 4.2em;
+    font-size: 3em;
 }
 
 .statuscolor {
@@ -127,6 +128,11 @@ h2 {
 .statussize h1 {
     font-size: 13vw;
     padding-bottom: 3px;
+}
+
+.statussize {
+    position: static;
+
 }
 
 .colorwhite {
@@ -289,42 +295,25 @@ section {
     display: none;
 }
 
-.arrow,
-.arrow:before
-  position: absolute
-  left: 50%
+#scroll{
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    color: white;
+    bottom: 10%;
+    left: 0;
+    animation: mymove 5s infinite;
+transition-timing-function: ease;
+    }
 
-.arrow
-  width: 40px
-  height: 40px
-  top: 50%
-  margin: -20px 0 0 -20px
-  -webkit-transform: rotate(45deg)
-  border-left: none
-  border-top: none
-  border-right: 2px #fff solid
-  border-bottom: 2px #fff solid
+    /* Standard syntax */
+    @keyframes mymove {
+    0%   {bottom: 8%;}
+    50%  {bottom: 10%;}
+    100% {bottom: 8%;}
+    }
 
-
-.arrow:before
-  content: ''
-  width: 20px
-  height: 20px
-  top: 50%
-  margin: -10px 0 0 -10px
-  border-left: none
-  border-top: none
-  border-right: 1px #fff solid
-  border-bottom: 1px #fff solid
-  animation-duration: 2s
-  animation-iteration-count: infinite
-  animation-name: arrow
-
-@keyframes arrow
-  0%
-    opacity: 1
-  100%
-    opacity: 0
-    transform: translate(-10px, -10px)
-
-  
+/*.flexOverwrite {
+    align-items: stretch !important;
+    margin-top: 1vh;
+}*/
