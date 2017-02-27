@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Big Poop Data | Collecting your data</title>
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="57x57" href="fav/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="fav/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="fav/apple-icon-72x72.png">
@@ -23,13 +24,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <!-- Stylesheets -->
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
-    <!-- <script src="js/bulma.js"></script> -->
     <script src="js/charts.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="js/dist/chartist.min.js"></script>
@@ -37,6 +39,7 @@
     <script src="js/waypoint.js"></script>
     <script src="js/countUp.js"></script>
     <script src="js/countUp-jquery.js"></script>
+    <!-- Custom JS -->
     <script src="js/makegraph.js"></script>
     <script src="js/getdata.js"></script>
     <script src="js/countuptime.js"></script>
@@ -46,36 +49,14 @@
     <div class="se-pre-con"></div>
 
     <section class="hero is-fullheight statuscolor" id="header">
-        <!-- Hero header: will stick at the top -->
         <div class="hero-head">
-            <!-- <header class="nav"> -->
-                <div class="container">
-                    <div class="nav-">
-                        <a class="nav-item">
-                            <span id="logo" alt="Logo"></span>
-                            <span id="logoMobile" alt="Logo"></span>
-                            <!-- <img src="https://cdn.shopify.com/s/files/1/1061/1924/files/Poop_Emoji.png?9898922749706957214" alt="Logo">
-                            <div class="logo-text">Big Poop Data (.io)</div> -->
-                        </a>
-                    </div>
-                    <!-- <span class="nav-toggle" id="nav-toggle">
-                        <span></span>
-                    <span></span>
-                    <span></span>
-                    </span>
-                    <div class="nav-right nav-menu" id="nav-menu">
-                        <a class="nav-item is-active colorwhite">
-                            Status
-                        </a>
-                        <a class="nav-item colorwhite" id="menu1">
-                            Data Analysis
-                          </a>
-                        <a class="nav-item colorwhite" id="menu2">
-                            Water Usage
-                        </a>
-                    </div> -->
-                </div>
+            <div class="container">
+                <a class="nav-item">
+                    <span id="logo" alt="Logo"></span>
+                    <span id="logoMobile" alt="Logo"></span>
+                </a>
             </div>
+        </div>
         <div class="hero-body flexOverwrite">
             <div class="container statussize">
                 <h1 class="status colorwhite toptext landingpage" id="status">
@@ -91,19 +72,6 @@
                 <a id="scroll">
                     scroll for more data
                 </a>
-                <div class="arrow"></div>
-
-                <!-- <h2 class="toptext topdescription">
-                    Lorem ipsum dolor sit amet
-                </h2> -->
-                <!-- <h2 class="toptext topdescriptiontext">
-                    Lorem ipsum dolor sit amet. Albert mag gerne Kuchen und ich schreibe jetzt statt lorem ipsum lol! Hier sollte dann langsam ein Zeilenumbruch kommen. Ah da is er ja! Der D-Wagen! Wenn ich mich beeile erwische ich ihn noch.
-                </h2> -->
-
-
-                <!-- <a href="" ><h2 id="scrolltolearntext">Scroll to learn more</h2></a> -->
-
-
             </div>
         </div>
 
@@ -117,7 +85,6 @@
         </div>
         <div class="closedopenreveal">
             <h1 class="graphheadline closedopenheadline">Closed-Open Ratio</h1>
-            <!-- <hr class="underline underlineCenter" size="10" align="center" /> -->
         </div>
     </section>
     <section class="foo" id="average">
@@ -184,39 +151,12 @@
         </div>
     </section>
     <script>
-        // (function($) {
-        //     $(window).on("load", function() {
-        //         $(".chartwrapper").mCustomScrollbar({
-        //             axis: "x", // vertical and horizontal scrollbar
-        //             setWidth: false,
-        //
-        //         });
-        //     });
-        // })(jQuery);
-
-
-        // $("#menu1").click(function() {
-        //
-        //     $('html, body').animate({
-        //         scrollTop: $("#average").offset().top
-        //     }, 800);
-        // });
-        //
-        //
-        // $("#menu2").click(function() {
-        //
-        //     $('html, body').animate({
-        //         scrollTop: $("#watersavings").offset().top
-        //     }, 600);
-        // });
-
         $("#scroll").click(function() {
 
             $('html, body').animate({
                 scrollTop: $("#openclosedratio").offset().top
             }, 600);
         });
-
     </script>
 </body>
 

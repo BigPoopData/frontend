@@ -84,7 +84,6 @@ div #main-content {
     height: 5vh;
 }
 
-
 @media (max-width:480px) {
     #logo {
         display: none;
@@ -132,7 +131,6 @@ h2 {
 
 .statussize {
     position: static;
-
 }
 
 .colorwhite {
@@ -239,13 +237,6 @@ section {
     /*min-height: 100%;*/
 }
 
-section {
-    /*min-height: 100%;*/
-}
-
-
-/*make a color different to fill-donut series*/
-
 .ct-chart-donut .ct-series-a .ct-slice-donut {
     stroke: rgba(46, 204, 113, 0.5);
     fill: transparent;
@@ -295,23 +286,30 @@ section {
     display: none;
 }
 
-#scroll{
+#scroll {
     width: 100%;
     position: absolute;
     text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
     color: white;
     bottom: 10%;
     left: 0;
-    animation: mymove 5s infinite;
-transition-timing-function: ease-in;
-    }
+    animation: bounceupdown 5s infinite;
+    transition-timing-function: ease-in;
+}
 
-    /* Standard syntax */
-    @keyframes mymove {
-    0%   {bottom: 4%;}
-    50%  {bottom: 6%;}
-    100% {bottom: 4%;}
+@keyframes bounceupdown {
+    0% {
+        bottom: 4%;
     }
+    50% {
+        bottom: 6%;
+    }
+    100% {
+        bottom: 4%;
+    }
+}
 
 /*.flexOverwrite {
     align-items: stretch !important;

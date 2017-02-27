@@ -122,6 +122,10 @@ function drawGraph1(destroyChart, dates, timestamp, barchartcolor) {
                 },
                 responsive: true,
                 maintainAspectRatio: false,
+                title: {
+                    fontFamily: 'Montserrat',
+                    fontStlye: 'bold',
+                },
                 legend: {
                     display: false,
                 },
