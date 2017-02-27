@@ -459,7 +459,7 @@ function closedopenGraph() {
                     offsetY: 10,
                     offsetX: -2
                 }, { //Item 2
-                    content: '<h3 class="openPercentage">' + closedPercentage + '<span class="small"> % closed</span></h3>'
+                    content: '<h3 class="openPercentage">' + closedPercentage + '<span class="small">% closed</span></h3>'
                 }]
             })
         ],

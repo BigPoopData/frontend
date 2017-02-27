@@ -26,21 +26,21 @@ section {
     }
 }
 
-
 section {
     padding: 0 15%;
 }
 
-
 .no-js #loader {
     display: none;
 }
+
 .js #loader {
     display: block;
     position: absolute;
     left: 100px;
     top: 0;
 }
+
 .se-pre-con {
     position: fixed;
     left: 0px;
@@ -50,16 +50,21 @@ section {
     z-index: 9999;
     background: url(../img/Preloader_5.gif) center no-repeat #fff;
 }
+
 .nav {
     box-shadow: 0 0px 0 rgba(219, 219, 219, 0.3) !important;
 }
+
 #nav-toggle:hover {
     background-color: rgba(39, 174, 96, 1.0);
 }
+
 .nav-item {}
+
 div #main-content {
     display: none;
 }
+
 #logo {
     background-image: url('../img/logo.svg');
     background-size: contain;
@@ -88,52 +93,62 @@ div #main-content {
     }
 }
 
-
 .nav-toggle span {
     background-color: #FFF;
 }
+
 .logo-text {
     padding: 10%;
     color: white;
 }
+
 .title {
     font-weight: 700 !important;
 }
+
 h1 {
     font-size: 4.2em;
     font-weight: bold;
 }
+
 h2 {
     font-size: 1.4em;
 }
+
 .graphheadline {
     font-size: 4.2em;
 }
+
 .statuscolor {
     background-color: white;
     transition: all 0.5s ease;
 }
+
 .statussize h1 {
     font-size: 13vw;
     padding-bottom: 3px;
 }
+
 .colorwhite {
     color: white !important;
 }
+
 section {
     padding-top: 2.5%;
 }
+
 #average {
     width: 100%;
 }
+
 #statusmessage {
     transition: all 0.5s ease;
 }
+
 #watersavings {
     text-align: left;
     background-color: #AEF3FC;
     /*background-image: url('../img/bg1.jpg');*/
-
     background-image: url('../img/bathroom.svg');
     background-position: 75%;
     background-size: 80vh;
@@ -142,23 +157,30 @@ section {
     color: white;
     min-height: 100%;
 }
+
 #watersavings h1 {
     padding-top: 35vh;
 }
+
 .statusmessage {
     font-size: 2.4em;
 }
+
 .toptext {
     font-weight: bold !important;
     text-align: left !important;
 }
+
 .topdescription {
     margin-top: 10%;
 }
+
 .topdescriptiontext {
     color: #fff;
 }
+
 #header {}
+
 #scrolltolearntext {
     text-align: center;
     color: #fff;
@@ -166,79 +188,103 @@ section {
     display: table-cell;
     vertical-align: bottom;
 }
+
 #elapsedtime {
     font-weight: 300 !important;
 }
+
 .ct-label {
     -webkit-transform: rotate(-40deg);
 }
+
 .chartWrapper {
     height: 60vh;
     /*border: 1px black solid;*/
-
     resize: both;
     width: 100%;
 }
+
 .chartWrapper::-webkit-scrollbar {
     display: none;
 }
+
 .chartWrapper>div {
     min-height: 100%;
 }
+
 .underline {
     width: 30%;
     height: 4px;
     margin-top: -1%;
 }
+
 .underline_big {
     width: 100%;
     height: 2px;
     /*margin-top: -1%;*/
 }
+
 .big_headline {
     font-size: 2.0em;
     font-weight: bold;
 }
+
 #intervals {
     /*min-height: 100%;*/
 }
+
 section {
     /*min-height: 100%;*/
 }
 
+
 /*make a color different to fill-donut series*/
+
 .ct-chart-donut .ct-series-a .ct-slice-donut {
     stroke: rgba(46, 204, 113, 0.5);
     fill: transparent;
 }
 
+
 /*make b hidden*/
+
 .ct-chart-donut .ct-series-b .ct-slice-donut {
     stroke: #efefef;
     fill: transparent;
     opacity: 0.0;
 }
 
+
 /*make all fill-donut series visible and set color*/
+
 .ct-chart-donut .ct-fill-donut .ct-slice-donut {
     stroke: #efefef;
     fill: transparent;
     opacity: 1;
 }
+
 .openPercentage {
     font-weight: bold;
     font-size: 2em;
 }
+
 #chart-e1 {
     height: 40vh;
 }
+
 .closedopenheadline {
     text-align: center !important;
 }
+
 .underlineCenter {
     text-align: center;
     width: 100%;
 }
+
 #openclosedratio {
     padding-bottom: 2%;
+}
+
+.landingpage2 {
+    display: none;
 }
