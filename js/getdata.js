@@ -122,6 +122,7 @@ getData.onmessage = function(msg) {
 
     drawGraph1(false, averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
     drawGraph2(false, intervalsPerMonthObject, averagesPerMonthTimestamps, graphcolor);
+    closedopenGraph();
 
     // drawGraph2(true, averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
 

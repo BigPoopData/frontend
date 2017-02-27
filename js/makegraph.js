@@ -180,7 +180,7 @@ function drawGraph2(destroyChart, dates, timestamp, barchartcolor) {
                         label: function(tooltipItem, data) {
                             var value = data.datasets[0].data[tooltipItem.index];
                             var label = data.labels[tooltipItem.index];
-                            return value + " Minutes";
+                            return value + " visits";
                         },
                         afterLabel: function(tooltipItem, data) {
                             if (tooltipItem.index === 0) {
@@ -297,6 +297,37 @@ function customgraph(dates, timestamp, barchartcolor) {
         type: "bar",
         data: lineChartData,
         options: {
+
+          tooltips: {
+              mode: 'label',
+
+              custom: function(tooltip) {
+                  tooltip.caretSize = 10,
+                      tooltip.backgroundColor = '#000',
+                      cornerRadius = 9
+              },
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      var value = data.datasets[0].data[tooltipItem.index];
+                      var label = data.labels[tooltipItem.index];
+                      return value + " Minutes";
+                  },
+                  afterLabel: function(tooltipItem, data) {
+                      if (tooltipItem.index === 0) {
+                          return "";
+                      } else if (tooltipItem.index === 1) {
+                          return "";
+                      } else {
+                          return "";
+                      }
+                  }
+              }
+          },
+          animation: {
+              easing: "easeInOutExpo" // tooltip animation
+          },
+
+
             scales: {
                 xAxes: [{
                     gridLines: {
@@ -355,6 +386,36 @@ function customgraph2(dates, timestamp, barchartcolor) {
         type: "bar",
         data: lineChartData,
         options: {
+
+          tooltips: {
+              mode: 'label',
+
+              custom: function(tooltip) {
+                  tooltip.caretSize = 10,
+                      tooltip.backgroundColor = '#000',
+                      cornerRadius = 9
+              },
+              callbacks: {
+                  label: function(tooltipItem, data) {
+                      var value = data.datasets[0].data[tooltipItem.index];
+                      var label = data.labels[tooltipItem.index];
+                      return value + " visits";
+                  },
+                  afterLabel: function(tooltipItem, data) {
+                      if (tooltipItem.index === 0) {
+                          return "";
+                      } else if (tooltipItem.index === 1) {
+                          return "";
+                      } else {
+                          return "";
+                      }
+                  }
+              }
+          },
+          animation: {
+            easing: "easeInOutExpo" // tooltip animation
+          },
+
             scales: {
                 xAxes: [{
                     gridLines: {
@@ -378,3 +439,54 @@ function customgraph2(dates, timestamp, barchartcolor) {
 
     });
 }
+
+function closedopenGraph(){
+  var ctx = document.getElementById("chart-e1");
+  var chart = new Chartist.Pie(ctx, {
+                series: [160, 60 ],
+                labels: ['', '']
+            }, {
+                donut: true,
+                donutWidth: 20,
+                startAngle: 210,
+                total: 260,
+                showLabel: false,
+                plugins: [
+                    Chartist.plugins.fillDonut({
+                        items: [{ //Item 1
+                            content: '<i class="fa fa-tachometer text-muted"></i>',
+                            position: 'bottom',
+                            offsetY : 10,
+                            offsetX: -2
+                        }, { //Item 2
+                            content: '<h3>160<span class="small">mph</span></h3>'
+                        }]
+                    })
+                ],
+            });
+            chart.on('draw', function(data) {
+                if(data.type === 'slice' && data.index == 0) {
+                    var pathLength = data.element._node.getTotalLength();
+
+
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1200,
+                            from: -pathLength + 'px',
+                            to:  '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            fill: 'freeze'
+                        }
+                    };
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+                    data.element.animate(animationDefinition, true);
+                }
+            });
+};

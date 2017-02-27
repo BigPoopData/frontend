@@ -2,22 +2,21 @@
 <html lang="en">
 
 <head>
-    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-    <!-- <script src="js/dist/chartist.min.js"></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Graphtest</title>
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" /> -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="js/bulma.js"></script>
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/charts.min.js"></script>
-    <script src="js/bulma.js"></script>
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/dist/chartist.min.js"></script>
+    <script src="js/chartist-plugin-fill-donut.min.js"></script>
     <script src="js/waypoint.js"></script>
     <script src="js/countUp.js"></script>
     <script src="js/countUp-jquery.js"></script>
@@ -93,12 +92,12 @@
         <h2 class="big_headline">Data Analysis</h2>
         <hr class="underline_big" size="10" align="left" />
         <div class="columns" id="main-content">
-            <div class="column">
-                <h1 id="averagesheadline">Averages</h1>
+            <div class="column averagesreveal">
+                <h1 id="graphheadline">Averages</h1>
                 <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
                 aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </div>
-            <div class="column">
+            <div class="column averagesreveal">
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart"></canvas>
@@ -109,15 +108,10 @@
         </div>
     </section>
 
-    <section class="foo" id="intervals">
+    <section id="intervals">
         <div class="columns">
-            <div class="column colimnswrap">
-                <h1 id="intervalsheadline">Intervals</h1>
-                <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
             <hr />
-            <div class="column">
+            <div class="column intervalsreveal">
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart2"></canvas>
@@ -125,11 +119,33 @@
                 </div>
 
             </div>
+            <div class="column intervalsreveal">
+              <h1 id="graphheadline">Intervals</h1>
+              <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
         </div>
     </section>
 
 
-    <section class="foo" id="watersavings">
+    <section id="openclosedratio">
+        <div class="columns">
+            <hr />
+            <div class="column closedopenreveal">
+              <h1 id="graphheadline">Closed-Open Ratio</h1>
+              <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+            <div class="column closedopenreveal">
+                  <div id="chart-e1"</div>
+              </div>
+        </div>
+
+        </div>
+    </section>
+
+
+    <section class="revealonscroll" id="watersavings">
         <h1><span id="waternumbers">0 </span> Litres</h1>
         <h2>
                  Water have been flushed
@@ -174,7 +190,7 @@
 
             $('html, body').animate({
                 scrollTop: $("#watersavings").offset().top
-            }, 1000);
+            }, 600);
         });
 
     </script>

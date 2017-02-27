@@ -86,6 +86,25 @@ function water() {
 
 $(document).ready(function() {
 
+  window.sr = ScrollReveal().reveal('.revealonscroll, .averagesreveal, intervalsreveal');
+
+  sr.reveal('.revealonscroll', {
+    duration: 500,
+    reset: true,
+  });
+
+  sr.reveal('.averagesreveal', {
+    duration: 500,
+    reset: true,
+  }, 100);
+
+  sr.reveal('.intervalsreveal', {
+    duration: 500,
+    reset: true,
+  }, 100);
+
+
+
     var waypoint = new Waypoint({
         element: document.getElementById('watersavings'),
         handler: function(direction) {
@@ -97,7 +116,3 @@ $(document).ready(function() {
         offset: '50%',
     });
 });
-
-window.sr = ScrollReveal({ reset: true });
-
-sr.reveal('.foo', { duration: 200 });

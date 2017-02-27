@@ -94,12 +94,8 @@ h2 {
     font-size: 1.4em;
 }
 
-#averagessheadline {
-    font-size: 4vw;
-}
-
-#intervalsheadline {
-    font-size: 4vw;
+#graphheadline {
+    font-size: 4.2em;
 }
 
 .statuscolor {
@@ -219,3 +215,20 @@ section {
 section {
     /*min-height: 100%;*/
 }
+
+/*make a color different to fill-donut series*/
+  .ct-chart-donut .ct-series-a .ct-slice-donut {
+      stroke: red;
+  }
+  /*make b hidden*/
+  .ct-chart-donut .ct-series-b .ct-slice-donut {
+      stroke: #efefef;
+      opacity: 0.0;
+
+  }
+  /*make all fill-donut series visible and set color*/
+  .ct-chart-donut .ct-fill-donut .ct-slice-donut{
+      stroke: #efefef;
+      opacity: 1;
+
+  }
