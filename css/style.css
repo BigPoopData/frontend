@@ -303,14 +303,14 @@ section {
     bottom: 10%;
     left: 0;
     animation: mymove 5s infinite;
-transition-timing-function: ease;
+transition-timing-function: ease-in;
     }
 
     /* Standard syntax */
     @keyframes mymove {
-    0%   {bottom: 8%;}
-    50%  {bottom: 10%;}
-    100% {bottom: 8%;}
+    0%   {bottom: 4%;}
+    50%  {bottom: 6%;}
+    100% {bottom: 4%;}
     }
 
 /*.flexOverwrite {
