@@ -61,7 +61,7 @@ function drawGraph1(destroyChart, dates, timestamp, barchartcolor) {
                     }
                 },
                 animation: {
-                    easing: "easeInOutBounce" // tooltip animation
+                    easing: "easeInOutBounce"
                 },
 
                 onClick: function handleClick(evt) {
@@ -139,17 +139,6 @@ function drawGraph2(destroyChart, dates, timestamp, barchartcolor) {
         labels: timestamp,
         scaleShowVerticalLines: true,
         datasets: [{
-            //     labels: timestamp,
-            //     scaleShowVerticalLines: true,
-            //     type: 'line',
-            //     label: 'Average Time in Minutes',
-            //     data: dates,
-            //     showLine: true,
-            //     borderColor: currentcolor,
-            //     borderWidth: 1,
-            //     tension: 0.1,
-            //
-            // }, {
             labels: timestamp,
             scaleShowVerticalLines: false,
             type: 'bar',
@@ -198,7 +187,7 @@ function drawGraph2(destroyChart, dates, timestamp, barchartcolor) {
                     }
                 },
                 animation: {
-                    easing: "easeInOutBounce" // tooltip animation
+                    easing: "easeInOutBounce"
                 },
 
                 onClick: function handleClick(evt) {
@@ -223,24 +212,11 @@ function drawGraph2(destroyChart, dates, timestamp, barchartcolor) {
 
                     myNewChart3.destroy();
                     customgraph2(activeLabelIntervals, activeIntervalsLabelTimestamps, graphcolor);
-                    // drawgraph1(dates, timestamp, barchartcolor);
                 },
 
                 scales: {
                     xAxes: [{
                         borderWidth: 0,
-                        //     afterTickToLabelConversion: function(data){
-                        //    var xLabels = data.ticks;
-                        //    xLabels.forEach(function (labels, i) {
-                        //        if (i % 2 == 1){
-                        //            xLabels[i] = '';
-                        //        }
-                        //    });},
-                        // ticks: {
-                        //     autoSkip: true,
-                        //     maxTicksLimit: 20
-                        // },
-
                         gridLines: {
                             display: false,
                             drawBorder: false
@@ -272,17 +248,6 @@ function customgraph(dates, timestamp, barchartcolor) {
         labels: timestamp,
         scaleShowVerticalLines: true,
         datasets: [{
-            //     labels: timestamp,
-            //     scaleShowVerticalLines: true,
-            //     type: 'line',
-            //     label: 'Average Time in Minutes',
-            //     data: dates,
-            //     showLine: true,
-            //     borderColor: currentcolor,
-            //     borderWidth: 1,
-            //     tension: 0.1,
-            //
-            // }, {
             labels: timestamp,
             scaleShowVerticalLines: true,
 
@@ -361,17 +326,6 @@ function customgraph2(dates, timestamp, barchartcolor) {
         labels: timestamp,
         scaleShowVerticalLines: true,
         datasets: [{
-            //     labels: timestamp,
-            //     scaleShowVerticalLines: true,
-            //     type: 'line',
-            //     label: 'Average Time in Minutes',
-            //     data: dates,
-            //     showLine: true,
-            //     borderColor: currentcolor,
-            //     borderWidth: 1,
-            //     tension: 0.1,
-            //
-            // }, {
             labels: timestamp,
             scaleShowVerticalLines: true,
 

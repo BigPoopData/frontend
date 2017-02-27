@@ -1,4 +1,5 @@
 //Initialize Variables
+
 var averagesPerDayTimestamps = [];
 var averagesPerMonthTimestamps = [];
 var averagesPerDayObject = [];
@@ -8,16 +9,6 @@ var averagesPerDayMinutesObject = [];
 var intervalsPerDayObject = [];
 var intervalsPerMonthObject = [];
 var intevervalsPerMonthTimestamps = [];
-var currentstatus;
-var waterusage = 0;
-var closedcolor = 'rgba(231, 76, 60, ';
-var opencolor = 'rgba(46, 204, 113, ';
-var currentcolor;
-var currentcolorlessopacity;
-var alphafull = '1.0)';
-var alphadown = '0.3)';
-var datetimestamp = new Date();
-var graphcolor;
 var activeAveragesLabelTimestamps = [];
 var activeLabelAverages = [];
 var activeLabelIntervals = [];
@@ -26,11 +17,17 @@ var openPercentage;
 var closedPercentage;
 var openPercentageGraphValue;
 var closedPercentageGraphValue;
+var currentstatus;
+var waterusage = 0;
+var datetimestamp = new Date();
 
-
-
-
-var months = new Array(12);
+var closedcolor = 'rgba(231, 76, 60, ';
+var opencolor = 'rgba(46, 204, 113, ';
+var alphafull = '1.0)';
+var alphadown = '0.3)';
+var currentcolor;
+var currentcolorlessopacity;
+var graphcolor;
 
 //connect to websocket
 var getData = new WebSocket("wss://metaklo.nico-rameder.at:8000/ws");
@@ -67,7 +64,6 @@ getData.onmessage = function(msg) {
     result = JSON.parse(msg.data);
     switch (result.name) {
         case "FullObject":
-            // dataset = result;
             averagesPerDayObject = result.averageClosedDurationPerDay;
             averagesPerMonthObject = result.averageClosedDurationPerMonth;
             for (var j = 0; j < averagesPerMonthObject.length; j++) {
@@ -133,8 +129,6 @@ getData.onmessage = function(msg) {
     drawGraph1(false, averagesPerMonthMinutesObject, averagesPerMonthTimestamps, graphcolor);
     drawGraph2(false, intervalsPerMonthObject, averagesPerMonthTimestamps, graphcolor);
     closedopenGraph();
-
-    // drawGraph2(true, averagesPerDayMinutesObject, averagesPerDayTimestamps, graphcolor);
 
     $(".se-pre-con").fadeOut("slow");
     $('#main-content').fadeIn("slow");
