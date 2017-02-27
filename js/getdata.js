@@ -22,6 +22,10 @@ var activeAveragesLabelTimestamps = [];
 var activeLabelAverages = [];
 var activeLabelIntervals = [];
 var activeIntervalsLabelTimestamps = [];
+var openPercentage;
+var closedPercentage;
+var openPercentageGraphValue;
+var closedPercentageGraphValue;
 
 
 
@@ -79,7 +83,10 @@ getData.onmessage = function(msg) {
 
             }
 
-
+            openPercentage = result.closedOpenRatio.openPercentage;
+            openPercentageGraphValue = 220 * openPercentage / 100;
+            closedPercentage = result.closedOpenRatio.closedPercentage;
+            closedPercentageGraphValue = 220 * closedPercentage / 100;
             currentstatus = result.lastEvent.open;
             var daterightnow = new Date();
             datetimestamp = Date.parse(result.lastEvent.timestamp);
@@ -99,23 +106,26 @@ getData.onmessage = function(msg) {
     waterusage = result.totalIntervals * 9;
 
     setTimerDurationElapsed(timedurationelapsed);
+    console.log(result);
 
     switch (currentstatus) {
         case "true":
-            $('#status').text('open');
-            $('.statuscolor').css("background-color", opencolor + alphafull);
-            $('.underline').css("background-color", opencolor + alphadown);
             currentcolor = opencolor + alphafull;
             currentcolorlessopacity = opencolor + alphadown;
+            $('#status').text('open');
+            $('.statuscolor').css("background-color", currentcolor);
+            $('.underline').css("background-color", currentcolorlessopacity);
+            $('.ct-slice-donut').css("stroke", currentcolor);
 
             break;
 
         case "false":
-            $('#status').text('occupied');
-            $('.statuscolor').css("background-color", closedcolor + alphafull);
-            $('.underline').css("background-color", closedcolor + alphadown);
             currentcolor = closedcolor + alphafull;
             currentcolorlessopacity = closedcolor + alphadown;
+            $('#status').text('occupied');
+            $('.statuscolor').css("background-color", currentcolor);
+            $('.underline').css("background-color", currentcolorlessopacity);
+            $('.ct-chart-donut .ct-series-a .ct-slice-donut').strokeStyle(currentcolor);
     }
 
     graphcolor = currentcolorlessopacity;

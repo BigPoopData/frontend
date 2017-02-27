@@ -86,7 +86,9 @@ function water() {
 
 $(document).ready(function() {
 
-  window.sr = ScrollReveal().reveal('.revealonscroll, .averagesreveal, intervalsreveal');
+  window.sr = ScrollReveal().reveal('.revealonscroll, .averagesreveal, intervalsreveal, .closedopenreveal',
+  { viewOffset: { top: -100, right: 0, bottom: -100, left: 0,},
+  });
 
   sr.reveal('.revealonscroll', {
     duration: 500,
@@ -102,6 +104,12 @@ $(document).ready(function() {
     duration: 500,
     reset: true,
   }, 100);
+
+  sr.reveal('.closedopenreveal', {
+    duration: 500,
+    reset: true,
+  }, 200);
+
 
 
 
