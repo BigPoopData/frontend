@@ -121,7 +121,7 @@ getData.onmessage = function(msg) {
             $('#status').text('occupied');
             $('.statuscolor').css("background-color", currentcolor);
             $('.underline').css("background-color", currentcolorlessopacity);
-            $('.ct-chart-donut .ct-series-a .ct-slice-donut').strokeStyle(currentcolor);
+            $('.ct-slice-donut').css("stroke", currentcolor);
     }
 
     graphcolor = currentcolorlessopacity;
