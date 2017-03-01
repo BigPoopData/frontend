@@ -36,37 +36,38 @@ setInterval(function() {
         $("#hours").html('');
     }
 
-    if (currentstatus) {
-        switch (true) {
-            case (sec < 30):
-                $("#statusmessage").html('"Go on, its free!"');
-                break;
-            case (sec < 120):
-                $("#statusmessage").html('"What are you waiting for"');
-                break;
-            case (sec < 500):
-                $("#statusmessage").html('"Come on in, theres even wifi"');
-                break;
-            case (sec < 800):
-                $("#statusmessage").html('"Testmessage"');
-                break;
-
-        }
-
-    } else if (!currentstatus) {
-        switch (true) {
-            case (sec < 30):
-                $("#statusmessage").html('"This could take longer..."');
-                break;
-            case (sec < 120):
-                $("#statusmessage").html('Stay patient! We know you can do it!');
-                break;
-            case (sec < 500):
-                $("#statusmessage").html('Really taking his/her time!');
-                break;
-
-        }
-    }
+    //Statusmessages
+    // if (currentstatus) {
+    //     switch (true) {
+    //         case (sec < 30):
+    //             $("#statusmessage").html('"Go on, its free!"');
+    //             break;
+    //         case (sec < 120):
+    //             $("#statusmessage").html('"What are you waiting for"');
+    //             break;
+    //         case (sec < 500):
+    //             $("#statusmessage").html('"Come on in, theres even wifi"');
+    //             break;
+    //         case (sec < 800):
+    //             $("#statusmessage").html('"Testmessage"');
+    //             break;
+    //
+    //     }
+    //
+    // } else if (!currentstatus) {
+    //     switch (true) {
+    //         case (sec < 30):
+    //             $("#statusmessage").html('"This could take longer..."');
+    //             break;
+    //         case (sec < 120):
+    //             $("#statusmessage").html('Stay patient! We know you can do it!');
+    //             break;
+    //         case (sec < 500):
+    //             $("#statusmessage").html('Really taking his/her time!');
+    //             break;
+    //
+    //     }
+    // }
 }, 1000);
 
 function water() {
