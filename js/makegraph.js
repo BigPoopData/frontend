@@ -49,8 +49,10 @@ function closedopenGraph(val1, val2, displayedPercentage) {
     });
 }
 
+var myChartArray = [];
+
 function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
-    var lineChartData = {
+        var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
         datasets: [{
@@ -66,7 +68,7 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
 
     var ctx = document.getElementById(elementHTML);
 
-    var myNewChart1 = new Chart(ctx, {
+    myChartArray[neededGraphData.graphvalue] = new Chart(ctx, {
         type: "bar",
         data: lineChartData,
         options: {
@@ -86,7 +88,8 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
 
             onClick: function handleClick(evt) { //do this when Graph is clicked
                 if (chartHoverActive) {
-                    var activeElement = myNewChart1.getElementAtEvent(evt);
+                    console.log(evt);
+                    var activeElement = myChartArray[neededGraphData.graphvalue].getElementAtEvent(evt);
 
                     var activeElementGraphData = {};
                     activeElementGraphData.activeX = activeElement[0]._chart.config.data.labels[activeElement[0]._index];
@@ -96,6 +99,7 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
                     activeElementGraphData.MonthYearValue = [];
                     // console.log(activeLabel);
                     // console.log(activeElementValue);
+
 
                     //owerLevelGraphX, lowerLevelGraphY
                     for (var l = 0; l < lowerLevelGraphX.length; l++) {
@@ -107,12 +111,11 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
 
                         activeElementGraphData.MonthYearValue.push(getMonths.month + " " + getMonths.year);
                         if (activeElementGraphData.MonthYearValue[l] == activeElementGraphData.activeX) {
-
                             activeElementGraphData.x.push(lowerLevelGraphX[l]);
                             activeElementGraphData.y.push(lowerLevelGraphY[l]);
                         }
                     }
-                    myNewChart1.destroy();
+                    myChartArray[neededGraphData.graphvalue].destroy();
                     universalGraph(false,'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo");
                 }
             },
@@ -147,6 +150,5 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
             },
         }
     });
-
     neededGraphData.graphvalue ++;
 }

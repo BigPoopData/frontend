@@ -4,7 +4,7 @@ var neededGraphData = {};
 var serverData = {};
 var waterusage = 0;
 var datetimestamp = new Date();
-neededGraphData.graphvalue = 1;
+neededGraphData.graphvalue = 0;
 
 var colorObject = {};
 colorObject.closedColor = 'rgba(231, 76, 60, ';
@@ -70,7 +70,7 @@ getData.onmessage = function(msg) {
                 neededGraphData.intervalsPerDayData.push(neededGraphData.averagesPerDayObject[k].intervals);
 
             }
-
+            neededGraphData.closedPercentage = serverData.closedOpenRatio.closedPercentage;
             neededGraphData.openPercentage = serverData.closedOpenRatio.openPercentage;
             neededGraphData.openPercentageGraphValue = 220 * serverData.closedOpenRatio.openPercentage / 100;
             neededGraphData.closedPercentageGraphValue = 220 * serverData.closedOpenRatio.closedPercentage / 100;
@@ -84,8 +84,8 @@ getData.onmessage = function(msg) {
         case "sitzklo":
             neededGraphData.currentstatus = JSON.parse(msg.data).open;
             neededGraphData.timedurationelapsed = 0;
-            // drawGraph1(true);
-            // drawGraph2(true);
+            myChartArray[0].destroy();
+            myChartArray[1].destroy();
 
             break;
     }
@@ -108,10 +108,13 @@ getData.onmessage = function(msg) {
             break;
 
         case "false":
+        colorObject.currentColor = colorObject.closedColor + colorObject.alphaFull;
+        colorObject.currentColorLessOpacity = colorObject.closedColor + colorObject.alphaDown;
+
             $('#status').text('occupied');
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
-            $('.ct-chart-donut .ct-series-a .ct-slice-donut').strokeStyle(colorObject.currentColor);
+            $('.ct-slice-donut').css("stroke", colorObject.currentColor);
     }
 
     //general Syntax:
@@ -119,7 +122,7 @@ getData.onmessage = function(msg) {
 
     universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
     universalGraph(false, 'bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps, neededGraphData.intervalsPerDayData);
-    closedopenGraph(neededGraphData.openPercentageGraphValue, neededGraphData.closedPercentageGraphValue, serverData.closedOpenRatio.closedPercentage);
+    closedopenGraph(neededGraphData.openPercentageGraphValue, neededGraphData.closedPercentageGraphValue, neededGraphData.closedPercentage);
 
     var waypoint = new Waypoint({
         element: document.getElementById('watersavings'),
@@ -134,6 +137,7 @@ getData.onmessage = function(msg) {
 
 
     $(".se-pre-con").fadeOut("slow");
+
     $('#main-content').fadeIn("slow");
 
     sr.reveal('.landingpage', {
