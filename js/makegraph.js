@@ -49,7 +49,7 @@ function closedopenGraph(val1, val2, displayedPercentage) {
     });
 }
 
-function universalGraph(cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, destroyGraph) {
+function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
     var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
@@ -81,7 +81,7 @@ function universalGraph(cartType, elementHTML, xAxis, yAxis, tooltipMessage, cha
                 }
             },
             animation: {
-                easing: "easeInOutBounce"
+                easing: animationEasing
             },
 
             onClick: function handleClick(evt) { //do this when Graph is clicked
@@ -96,9 +96,11 @@ function universalGraph(cartType, elementHTML, xAxis, yAxis, tooltipMessage, cha
                     activeElementGraphData.MonthYearValue = [];
                     // console.log(activeLabel);
                     // console.log(activeElementValue);
-                    for (var l = 0; l < neededGraphData.averagesPerDayObject.length; l++) {
+
+                    //owerLevelGraphX, lowerLevelGraphY
+                    for (var l = 0; l < lowerLevelGraphX.length; l++) {
                         var getMonths = {};
-                        getMonths.checkIt = moment(neededGraphData.averagesPerDayObject[l].timestamp);
+                        getMonths.checkIt = moment(lowerLevelGraphX[l]);
                         getMonths.month = getMonths.checkIt.format('MMM');
                         getMonths.day = getMonths.checkIt.format('D');
                         getMonths.year = getMonths.checkIt.format('YYYY');
@@ -106,12 +108,12 @@ function universalGraph(cartType, elementHTML, xAxis, yAxis, tooltipMessage, cha
                         activeElementGraphData.MonthYearValue.push(getMonths.month + " " + getMonths.year);
                         if (activeElementGraphData.MonthYearValue[l] == activeElementGraphData.activeX) {
 
-                            activeElementGraphData.x.push(neededGraphData.averagesPerDayObject[l].timestamp);
-                            activeElementGraphData.y.push(neededGraphData.averagesPerDayMinutesObject[l]);
+                            activeElementGraphData.x.push(lowerLevelGraphX[l]);
+                            activeElementGraphData.y.push(lowerLevelGraphY[l]);
                         }
                     }
                     myNewChart1.destroy();
-                    universalGraph('bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthMinutesObject, " Minutes", colorObject.currentColorLessOpacity, false, colorObject.currentColor, "ease-in", false);
+                    universalGraph(false,'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo");
                 }
             },
 

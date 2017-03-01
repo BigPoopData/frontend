@@ -51,28 +51,27 @@ getData.onmessage = function(msg) {
             neededGraphData.averagesPerMonthObject = serverData.averageClosedDurationPerMonth;
 
             neededGraphData.averagesPerMonthTimestamps = [];
-            neededGraphData.averagesPerMonthMinutesObject = [];
-            neededGraphData.intervalsPerMonthObject = [];
+            neededGraphData.averagesPerMonthData = [];
+            neededGraphData.intervalsPerMonthData = [];
 
             neededGraphData.averagesPerDayTimestamps = [];
-            neededGraphData.averagesPerDayMinutesObject = [];
-            neededGraphData.intervalsPerDayObject = [];
+            neededGraphData.averagesPerDayData = [];
+            neededGraphData.intervalsPerDayData = [];
 
             for (var j = 0; j < neededGraphData.averagesPerMonthObject.length; j++) {
                 neededGraphData.averagesPerMonthTimestamps.push(neededGraphData.averagesPerMonthObject[j].timestamp);
-                neededGraphData.averagesPerMonthMinutesObject.push(Math.floor((neededGraphData.averagesPerMonthObject[j].average / 60) * 100) / 100);
-                neededGraphData.intervalsPerMonthObject.push(neededGraphData.averagesPerMonthObject[j].intervals);
+                neededGraphData.averagesPerMonthData.push(Math.floor((neededGraphData.averagesPerMonthObject[j].average / 60) * 100) / 100);
+                neededGraphData.intervalsPerMonthData.push(neededGraphData.averagesPerMonthObject[j].intervals);
 
             }
-            for (var k = 0; k < neededGraphData.averagesPerMonthObject.length; k++) {
-                neededGraphData.averagesPerDayTimestamps.push(neededGraphData.averagesPerMonthObject[k].timestamp);
-                neededGraphData.averagesPerDayMinutesObject.push(Math.floor((neededGraphData.averagesPerMonthObject[k].average / 60) * 100) / 100);
-                neededGraphData.intervalsPerDayObject.push(neededGraphData.averagesPerMonthObject[k].intervals);
+            for (var k = 0; k < neededGraphData.averagesPerDayObject.length; k++) {
+                neededGraphData.averagesPerDayTimestamps.push(neededGraphData.averagesPerDayObject[k].timestamp);
+                neededGraphData.averagesPerDayData.push(Math.floor((neededGraphData.averagesPerDayObject[k].average / 60) * 100) / 100);
+                neededGraphData.intervalsPerDayData.push(neededGraphData.averagesPerDayObject[k].intervals);
 
             }
 
             neededGraphData.openPercentage = serverData.closedOpenRatio.openPercentage;
-            closedPercentage = serverData.closedOpenRatio.closedPercentage;
             neededGraphData.openPercentageGraphValue = 220 * serverData.closedOpenRatio.openPercentage / 100;
             neededGraphData.closedPercentageGraphValue = 220 * serverData.closedOpenRatio.closedPercentage / 100;
             neededGraphData.currentstatus = serverData.lastEvent.open;
@@ -115,9 +114,11 @@ getData.onmessage = function(msg) {
             $('.ct-chart-donut .ct-series-a .ct-slice-donut').strokeStyle(colorObject.currentColor);
     }
 
+    //general Syntax:
+    //universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
 
-    universalGraph('bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthMinutesObject, " Minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "ease-in", false);
-    universalGraph('bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthObject, " visits", colorObject.currentColorLessOpacity, false, colorObject.currentColor, "ease-in", false);
+    universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
+    universalGraph(false, 'bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps, neededGraphData.intervalsPerDayData);
     closedopenGraph(neededGraphData.openPercentageGraphValue, neededGraphData.closedPercentageGraphValue, serverData.closedOpenRatio.closedPercentage);
 
     var waypoint = new Waypoint({
