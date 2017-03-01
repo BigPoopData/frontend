@@ -88,8 +88,7 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
 
             onClick: function handleClick(evt) { //do this when Graph is clicked
                 if (chartHoverActive) {
-                    console.log(evt);
-                    var activeElement = myChartArray[neededGraphData.graphvalue].getElementAtEvent(evt);
+                    var activeElement = this.getElementAtEvent(evt);
 
                     var activeElementGraphData = {};
                     activeElementGraphData.activeX = activeElement[0]._chart.config.data.labels[activeElement[0]._index];
@@ -115,7 +114,7 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
                             activeElementGraphData.y.push(lowerLevelGraphY[l]);
                         }
                     }
-                    myChartArray[neededGraphData.graphvalue].destroy();
+                    this.destroy();
                     universalGraph(false,'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo");
                 }
             },

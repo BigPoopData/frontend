@@ -120,6 +120,9 @@ getData.onmessage = function(msg) {
     //general Syntax:
     //universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
 
+    //first graph
+    universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
+    //
     universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
     universalGraph(false, 'bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps, neededGraphData.intervalsPerDayData);
     closedopenGraph(neededGraphData.openPercentageGraphValue, neededGraphData.closedPercentageGraphValue, neededGraphData.closedPercentage);
