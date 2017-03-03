@@ -211,7 +211,7 @@ section {
 }
 
 .chartWrapper {
-    height: 60vh;
+    height: 30vh;
     /*border: 1px black solid;*/
     resize: both;
     width: 100%;

@@ -84,9 +84,9 @@ getData.onmessage = function(msg) {
         case "sitzklo":
             neededGraphData.currentstatus = JSON.parse(msg.data).open;
             neededGraphData.timedurationelapsed = 0;
+            console.log(myChartArray);
             myChartArray[0].destroy();
             myChartArray[1].destroy();
-
             break;
     }
 
@@ -120,13 +120,15 @@ getData.onmessage = function(msg) {
     //general Syntax:
     //universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
 
-    //first graph
+    //average Graph
     universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
-    //
-    universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
+    //interval Graph
     universalGraph(false, 'bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps, neededGraphData.intervalsPerDayData);
+    //closed open interval
     closedopenGraph(neededGraphData.openPercentageGraphValue, neededGraphData.closedPercentageGraphValue, neededGraphData.closedPercentage);
 
+
+    //waypoint for waterusage
     var waypoint = new Waypoint({
         element: document.getElementById('watersavings'),
         handler: function(direction) {

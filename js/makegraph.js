@@ -115,7 +115,7 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
                         }
                     }
                     this.destroy();
-                    universalGraph(false,'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo");
+                    universalGraph(false,'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColorLessOpacity, "easeInOutExpo");
                 }
             },
 
