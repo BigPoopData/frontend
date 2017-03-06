@@ -27,22 +27,6 @@
     <!-- Stylesheets -->
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
-    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
-    <script src="js/lib/jquery.scrollTo.min.js"></script>
-    <script src="js/lib/charts.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="js/lib/chartist.min.js"></script>
-    <script src="js/lib/chartist-plugin-fill-donut.min.js"></script>
-    <script src="js/lib/waypoint.js"></script>
-    <script src="js/lib/countUp.js"></script>
-    <script src="js/lib/countUp-jquery.js"></script>
-    <!-- Custom JS -->
-    <script src="js/makegraph.js"></script>
-    <script src="js/getdata.js"></script>
-    <script src="js/countuptime.js"></script>
 </head>
 
 <body>
@@ -88,15 +72,23 @@
         </div>
     </section>
     <section class="foo" id="average">
-        <h2 class="big_headline">Data Analysis</h2>
-        <hr class="underline_big" size="10" align="middle" />
         <div class="columns" id="main-content">
             <div class="column averagesreveal">
-                <h1 class="graphheadline">Averages</h1>
-                <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1 class="graphheadline" id="totalminutes">more than 5 days</h1>
+                <hr class="underline" size="10" align="left" />
+                <div class="graphtextwrapper">
+                    <p>
+                        were spent on the toilet over a timespan of <span class="currentcolor" id="totaltimespan">60 days.</span>
+                    </p>
+                    <p>
+                        Visitors spent an average of <span class="currentcolor" id="totalaverage">6 minutes</span><br />on the toilet
+                    </p>
+                    <p class="clickongraph">
+                        Click a graph to show more data
+                    </p>
+                </div>
             </div>
-            <div class="column averagesreveal">
+            <div class="column is-two-thirds averagesreveal">
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart"></canvas>
@@ -110,7 +102,7 @@
     <section id="intervals">
         <div class="columns">
             <hr />
-            <div class="column intervalsreveal">
+            <div class="column is-two-thirds intervalsreveal">
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart2"></canvas>
@@ -119,9 +111,20 @@
 
             </div>
             <div class="column intervalsreveal">
-                <h1 class="graphheadline">Interval Quantity</h1>
-                <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1 class="graphheadline" id="totalintervals">more than 2000 intervals</h1>
+                <hr class="underline" size="10" align="left" />
+                <div class="graphtextwrapper">
+                    <p>
+                        have been counted so far
+                        <!-- <span class="currentcolor" id="totaltimespan2">60 days.</span> -->
+                    </p>
+                    <p>
+                        Visitors spent an average of <span class="currentcolor" id="totalintervalstime">6 minutes</span><br />on the toilet
+                    </p>
+                    <p class="clickongraph">
+                        Click a graph to show more data
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -129,27 +132,56 @@
 
 
 
-    <section class="revealonscroll" id="watersavings">
-        <h1><span id="waternumbers">0 </span> Litres</h1>
-        <h2>
-                 Water have been flushed
-          </h2>
-        <h2>
+    <section class="revealonscroll" id="toiletdata">
+        <div id="watersavings">
+            <p>
+
+                <h2>
               since 22. November 2016
           </h2>
+            </p>
+
+            <h1><span id="waternumbers">~20.000</span> Litres</h1>
+            <h2>
+              of Water have been flushed
+          </h2>
+        </div>
+
+        <div id="papersavings">
+            <h1><span id="papernumbers">~40</span> Rolls</h1>
+            <h2>
+                of Toilet paper have been used
+            </h2>
+        </div>
     </section>
-
-
 
     <section class="footer">
         <div class="container">
             <div class="content has-text-centered">
                 <p>
-                    <strong>Big Poop Data</strong> by <a href="">Big Poop Corp.</a> The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+                    <strong>Big Poop Data</strong> by <a href="" class="currentcolor">Big Poop Corp.</a> The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" class="currentcolor">CC ANS 4.0</a>.
                 </p>
             </div>
         </div>
     </section>
+    <!-- JS -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="js/lib/jquery.scrollTo.min.js"></script>
+    <script src="js/lib/charts.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/lib/chartist.min.js"></script>
+    <script src="js/lib/chartist-plugin-fill-donut.min.js"></script>
+    <script src="js/lib/waypoint.js"></script>
+    <script src="js/lib/countUp.js"></script>
+    <script src="js/lib/countUp-jquery.js"></script>
+    <script src="https://cdn3.devexpress.com/jslib/16.2.5/js/dx.all.js"></script>
+    <!-- Custom JS -->
+    <script src="js/makegraph.js"></script>
+    <script src="js/getdata.js"></script>
+    <script src="js/countuptime.js"></script>
     <script>
         $("#scroll").click(function() {
 

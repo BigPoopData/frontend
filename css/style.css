@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900');
+font-family: 'Montserrat', sans-serif;
+
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ html, body {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 section {
@@ -49,6 +50,15 @@ section {
     height: 100%;
     z-index: 9999;
     background: url(../img/Preloader_5.gif) center no-repeat #fff;
+}
+
+.se-pre-con-text {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }
 
 .nav {
@@ -108,7 +118,7 @@ div #main-content {
 
 h1 {
     font-size: 4.2em;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 h2 {
@@ -149,7 +159,7 @@ section {
     transition: all 0.5s ease;
 }
 
-#watersavings {
+#toiletdata {
     text-align: left;
     background-color: #AEF3FC;
     /*background-image: url('../img/bg1.jpg');*/
@@ -160,10 +170,19 @@ section {
     margin-top: 2.5%;
     color: white;
     min-height: 100%;
+    position: relative;
 }
 
-#watersavings h1 {
-    padding-top: 35vh;
+#watersavings {
+    position: absolute;
+    /*padding-top: 20vh;*/
+    top: 25%;
+}
+
+#papersavings {
+    position: absolute;
+    /*padding-top: 15vh;*/
+    bottom: 25%;
 }
 
 .statusmessage {
@@ -171,7 +190,7 @@ section {
 }
 
 .toptext {
-    font-weight: bold !important;
+    font-weight: 500 !important;
     text-align: left !important;
 }
 
@@ -202,7 +221,7 @@ section {
 }
 
 .chartWrapper {
-    height: 60vh;
+    height: 45vh;
     /*border: 1px black solid;*/
     resize: both;
     width: 100%;
@@ -230,11 +249,12 @@ section {
 
 .big_headline {
     font-size: 2.0em;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 #intervals {
-    /*min-height: 100%;*/
+    padding-top: 8%;
+    padding-bottom: 5%;
 }
 
 .ct-chart-donut .ct-series-a .ct-slice-donut {
@@ -261,7 +281,7 @@ section {
 }
 
 .openPercentage {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 2em;
 }
 
@@ -290,7 +310,7 @@ section {
     width: 100%;
     position: absolute;
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1.4em;
     color: white;
     bottom: 10%;
@@ -315,3 +335,29 @@ section {
     align-items: stretch !important;
     margin-top: 1vh;
 }*/
+
+.graphtextwrapper {
+    margin-top: -3%;
+}
+
+.graphtextwrapper p{
+    padding-bottom: 5%;
+}
+
+#scroll:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 3px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+#scroll:hover:after {
+	width: 10vw;
+	background: white;
+}
+
+.clickongraph {
+    padding-top: 40%;
+}
