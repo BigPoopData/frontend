@@ -3,6 +3,7 @@ var neededGraphData = {};
 //Some people may call this the mighty wall of Variables
 var serverData = {};
 var waterusage = 0;
+var paperusage = 0;
 var datetimestamp = new Date();
 neededGraphData.graphvalue = 0;
 
@@ -79,18 +80,31 @@ getData.onmessage = function(msg) {
             var daterightnow = new Date();
             var dateinterval = daterightnow - neededGraphData.datetimestamp;
             neededGraphData.timedurationelapsed = Math.floor(dateinterval / 1000);
+            $('#totalminutes').text(Math.floor(serverData.total.duration.closed / 60 / 60 / 24 * 100)/100 + ' days');
+            $('#totalaverage').text(Math.floor(serverData.total.average.closed / 60 * 100) / 100 + ' minutes');
+            $('#totalintervals').text(serverData.total.intervals.closed + ' intervals');
+
+
+            paperusage = Math.floor(serverData.total.toiletPaperUsage.value * 100) / 100;
             break;
 
         case "sitzklo":
             neededGraphData.currentstatus = JSON.parse(msg.data).open;
             neededGraphData.timedurationelapsed = 0;
-            console.log(myChartArray);
+            for (var m; m < neededGraphData.graphvalue; m++){
+                myChartArray[m].destroy();
+                console.log('destroy');
+            }
+
             myChartArray[0].destroy();
             myChartArray[1].destroy();
+
             break;
     }
 
     waterusage = serverData.totalIntervals * 9;
+
+
 
     setTimerDurationElapsed(neededGraphData.timedurationelapsed);
 
@@ -105,8 +119,6 @@ getData.onmessage = function(msg) {
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.ct-slice-donut').css("stroke", colorObject.currentColor);
             $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
-
-
             break;
 
         case "false":
@@ -116,34 +128,35 @@ getData.onmessage = function(msg) {
             $('#status').text('occupied');
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
-            $('.ct-slice-donut').css("stroke", colorObject.currentColor);
+            $('.ct-chart-donut .ct-series-a .ct-slice-donut').css("stroke", colorObject.currentColorLessOpacity);
             $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
     }
 
     //general Syntax:
-    //universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
+    //universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
     //polarArea
     //average Graph
-    universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
+    universalGraph('bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
     //interval Graph
-    universalGraph(false, 'bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps, neededGraphData.intervalsPerDayData);
+    universalGraph('bar', "myChart2", neededGraphData.averagesPerMonthTimestamps, neededGraphData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps, neededGraphData.intervalsPerDayData);
     //closed open interval
     closedopenGraph(neededGraphData.openPercentageGraphValue, neededGraphData.closedPercentageGraphValue, neededGraphData.closedPercentage);
 
 
     //waypoint for waterusage
     var waypoint = new Waypoint({
-        element: document.getElementById('watersavings'),
+        element: document.getElementById('toiletdata'),
         handler: function(direction) {
             if (firstscroll === 0) {
                 water();
+                rolls();
                 firstscroll++;
             }
         },
-        offset: '50%',
+        offset: '80%',
     });
 
-
+    //fadeout loading animation on load finish
     $(".se-pre-con").fadeOut("slow");
 
     $('#main-content').fadeIn("slow");
@@ -155,6 +168,7 @@ getData.onmessage = function(msg) {
     }, 50);
 };
 
+//disconnect on windows close
 window.onbeforeunload = function() {
     websocket.onclose = function() {}; // disable onclose handler first
     websocket.close();

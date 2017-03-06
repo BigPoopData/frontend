@@ -85,6 +85,22 @@ function water() {
     waternum.start();
 }
 
+function rolls() {
+    var rollsid = "papernumbers";
+
+    var options = {  
+        useEasing: true,
+          useGrouping: true,
+          separator: ',',
+          decimal: '.',
+          prefix: '',
+          suffix: ''
+    };
+    var papernum = new CountUp(rollsid, 0, paperusage, 2, 1, options);
+    papernum.start();
+}
+
+
 $(document).ready(function() {
 
     var sroptions = {

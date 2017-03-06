@@ -51,7 +51,7 @@ function closedopenGraph(val1, val2, displayedPercentage) {
 
 var myChartArray = [];
 
-function universalGraph(destroyGraph, chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
+function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
     var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
@@ -101,7 +101,7 @@ function universalGraph(destroyGraph, chartType, elementHTML, xAxis, yAxis, tool
                     // console.log(activeElementValue);
 
 
-                    //owerLevelGraphX, lowerLevelGraphY
+                    //lowerLevelGraphX, lowerLevelGraphY
                     for (var l = 0; l < lowerLevelGraphX.length; l++) {
                         var getMonths = {};
                         getMonths.checkIt = moment(lowerLevelGraphX[l]);
@@ -116,7 +116,7 @@ function universalGraph(destroyGraph, chartType, elementHTML, xAxis, yAxis, tool
                         }
                     }
                     this.destroy();
-                    universalGraph(false, 'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColorLessOpacity, "easeInOutExpo");
+                    universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo");
                 }
             },
 

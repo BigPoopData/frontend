@@ -159,7 +159,7 @@ section {
     transition: all 0.5s ease;
 }
 
-#watersavings {
+#toiletdata {
     text-align: left;
     background-color: #AEF3FC;
     /*background-image: url('../img/bg1.jpg');*/
@@ -170,10 +170,19 @@ section {
     margin-top: 2.5%;
     color: white;
     min-height: 100%;
+    position: relative;
 }
 
-#watersavings h1 {
-    padding-top: 35vh;
+#watersavings {
+    position: absolute;
+    /*padding-top: 20vh;*/
+    top: 25%;
+}
+
+#papersavings {
+    position: absolute;
+    /*padding-top: 15vh;*/
+    bottom: 25%;
 }
 
 .statusmessage {
@@ -181,7 +190,7 @@ section {
 }
 
 .toptext {
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     text-align: left !important;
 }
 
@@ -333,4 +342,22 @@ section {
 
 .graphtextwrapper p{
     padding-bottom: 5%;
+}
+
+#scroll:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 3px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+#scroll:hover:after {
+	width: 10vw;
+	background: white;
+}
+
+.clickongraph {
+    padding-top: 40%;
 }
