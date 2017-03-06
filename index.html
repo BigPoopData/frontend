@@ -40,9 +40,9 @@
     <script src="js/lib/waypoint.js"></script>
     <script src="js/lib/countUp.js"></script>
     <script src="js/lib/countUp-jquery.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/16.2.5/css/dx.spa.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/16.2.5/css/dx.common.css" />
-    <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/16.2.5/css/dx.light.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/16.2.5/css/dx.spa.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/16.2.5/css/dx.common.css" /> -->
+    <!-- <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/16.2.5/css/dx.light.css" /> -->
     <script src="https://cdn3.devexpress.com/jslib/16.2.5/js/dx.all.js"></script>
     <!-- Custom JS -->
     <script src="js/makegraph.js"></script>
@@ -95,11 +95,19 @@
     <section class="foo" id="average">
         <div class="columns" id="main-content">
             <div class="column averagesreveal">
-                <h1 class="graphheadline">6.79 minutes</h1>
-                <hr class="underline" size="10" align="left" />  were spent on the toilet, on average. (1 month)
-                <br />
-                <br />
-                Showing: 1 Month
+                <h1 class="graphheadline">3838 minutes</h1>
+                <hr class="underline" size="10" align="left" />
+                <div class="graphtextwrapper">
+                    <p>
+                        were spent on the toilet over a timespan of <span class="currentcolor" id="totaltimespan">60 days.</span>
+                    </p>
+                    <p>
+                        Visitors spent an average of <span class="currentcolor" id="totalaverage">6 minutes</span><br />on the toilet
+                    </p>
+                    <p>
+                        Click a graph to show more
+                    </p>
+                </div>
             </div>
             <div class="column is-two-thirds averagesreveal">
                 <div class="chartWrapper">
@@ -115,7 +123,7 @@
     <section id="intervals">
         <div class="columns">
             <hr />
-            <div class="column intervalsreveal">
+            <div class="column is-two-thirds intervalsreveal">
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart2"></canvas>
@@ -124,9 +132,19 @@
 
             </div>
             <div class="column intervalsreveal">
-                <h1 class="graphheadline">Interval Quantity</h1>
-                <hr class="underline" size="10" align="left" /> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <h1 class="graphheadline">3838 minutes</h1>
+                <hr class="underline" size="10" align="left" />
+                <div class="graphtextwrapper">
+                    <p>
+                        were spent on the toilet over a timespan of <span class="currentcolor" id="totaltimespan2">60 days.</span>
+                    </p>
+                    <p>
+                        Visitors spent an average of <span class="currentcolor" id="totalintervals">6 minutes</span><br />on the toilet
+                    </p>
+                    <p>
+                        Click a graph to show more
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -135,9 +153,9 @@
 
 
     <section class="revealonscroll" id="watersavings">
-        <h1><span id="waternumbers">0 </span> Litres</h1>
+        <h1><span id="waternumbers">~20.000</span> Litres</h1>
         <h2>
-                 Water have been flushed
+              Water have been flushed
           </h2>
         <h2>
               since 22. November 2016

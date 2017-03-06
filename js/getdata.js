@@ -104,6 +104,8 @@ getData.onmessage = function(msg) {
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.ct-slice-donut').css("stroke", colorObject.currentColor);
+            $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
+
 
             break;
 
@@ -115,11 +117,12 @@ getData.onmessage = function(msg) {
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.ct-slice-donut').css("stroke", colorObject.currentColor);
+            $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
     }
 
     //general Syntax:
     //universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
-//polarArea
+    //polarArea
     //average Graph
     universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
     //interval Graph
