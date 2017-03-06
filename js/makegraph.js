@@ -51,25 +51,26 @@ function closedopenGraph(val1, val2, displayedPercentage) {
 
 var myChartArray = [];
 
-function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
-        var lineChartData = {
+function universalGraph(destroyGraph, chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
+    var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
         datasets: [{
             labels: xAxis,
             data: yAxis,
             scaleShowVerticalLines: false,
-            type: cartType,
+            type: chartType,
             label: 'Bar Component',
             backgroundColor: chartColor,
             hoverBackgroundColor: chartHoverColor
+
         }]
     };
 
     var ctx = document.getElementById(elementHTML);
 
     myChartArray[neededGraphData.graphvalue] = new Chart(ctx, {
-        type: "bar",
+        type: chartType,
         data: lineChartData,
         options: {
             tooltips: {
@@ -115,11 +116,12 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
                         }
                     }
                     this.destroy();
-                    universalGraph(false,'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColorLessOpacity, "easeInOutExpo");
+                    universalGraph(false, 'bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColorLessOpacity, "easeInOutExpo");
                 }
             },
 
             scales: {
+
                 xAxes: [{
                     borderWidth: 0,
                     gridLines: {
@@ -149,5 +151,17 @@ function universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, toolt
             },
         }
     });
-    neededGraphData.graphvalue ++;
+    neededGraphData.graphvalue++;
 }
+
+// function d3Graph1(elementHTML, xAxis, yAxis) {
+//     $(elementHTML).dxChart({
+//           dataSource: dataSource,
+//           series: {
+//               argumentField: "day",
+//               valueField: "oranges",
+//               name: "My oranges",
+//               type: "bar",
+//               color: '#ffaa66'
+//           }
+//       });}

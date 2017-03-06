@@ -119,7 +119,7 @@ getData.onmessage = function(msg) {
 
     //general Syntax:
     //universalGraph(destroyGraph, cartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
-
+//polarArea
     //average Graph
     universalGraph(false, 'bar', "myChart", neededGraphData.averagesPerMonthTimestamps, neededGraphData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededGraphData.averagesPerDayTimestamps,neededGraphData.averagesPerDayData);
     //interval Graph
