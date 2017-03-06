@@ -126,16 +126,10 @@ getData.onmessage = function(msg) {
         colorObject.currentColorLessOpacity = colorObject.closedColor + colorObject.alphaDown;
 
             $('#status').text('occupied');
-<<<<<<< HEAD
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.ct-chart-donut .ct-series-a .ct-slice-donut').css("stroke", colorObject.currentColorLessOpacity);
             $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
-=======
-            $('.statuscolor').css("background-color", currentcolor);
-            $('.underline').css("background-color", currentcolorlessopacity);
-            $('.ct-slice-donut').css("stroke", currentcolor);
->>>>>>> master
     }
 
     //general Syntax:
