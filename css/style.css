@@ -361,3 +361,20 @@ section {
 .clickongraph {
     padding-top: 40%;
 }
+
+.graphmenu {
+  /*padding-right: 5%;
+  padding-left: 5%;*/
+  display: none;
+
+}
+
+.graphmenuwrapper {
+    /*width: 100%;*/
+    padding-right: 10%;
+    text-align: right;
+    color: #626262;
+    height: 5vh;
+    width: 100%;
+
+}

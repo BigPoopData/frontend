@@ -49,10 +49,9 @@ function closedopenGraph(val1, val2, displayedPercentage) {
     });
 }
 
-var myChartArray = [];
 
 function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
-    var lineChartData = {
+        var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
         datasets: [{
@@ -63,13 +62,12 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
             label: 'Bar Component',
             backgroundColor: chartColor,
             hoverBackgroundColor: chartHoverColor
-
         }]
     };
 
     var ctx = document.getElementById(elementHTML);
 
-    myChartArray[neededGraphData.graphvalue] = new Chart(ctx, {
+    var graph = new Chart(ctx, {
         type: chartType,
         data: lineChartData,
         options: {
@@ -102,6 +100,7 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
 
 
                     //lowerLevelGraphX, lowerLevelGraphY
+
                     for (var l = 0; l < lowerLevelGraphX.length; l++) {
                         var getMonths = {};
                         getMonths.checkIt = moment(lowerLevelGraphX[l]);
@@ -116,7 +115,11 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
                         }
                     }
                     this.destroy();
-                    universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo");
+                    universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo", lowerLevelGraphX, lowerLevelGraphY);
+                    $('#graphmenu1').fadeIn('slow');
+                    $( "#graphmenu1" ).click(function() {
+                        neededData.graph1.destroy();
+                    });
                 }
             },
 
@@ -151,7 +154,8 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
             },
         }
     });
-    neededGraphData.graphvalue++;
+
+    return graph;
 }
 
 // function d3Graph1(elementHTML, xAxis, yAxis) {
