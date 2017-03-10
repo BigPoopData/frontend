@@ -50,8 +50,8 @@ function closedopenGraph(val1, val2, displayedPercentage) {
 }
 
 
-function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
-        var lineChartData = {
+function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu) {
+    var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
         datasets: [{
@@ -114,11 +114,19 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
                             activeElementGraphData.y.push(lowerLevelGraphY[l]);
                         }
                     }
+
+                    var thisGraph = this;
+
+
                     this.destroy();
-                    universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo", lowerLevelGraphX, lowerLevelGraphY);
-                    $('#graphmenu1').fadeIn('slow');
-                    $( "#graphmenu1" ).click(function() {
-                        neededData.graph1.destroy();
+                    thisGraph = universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo", lowerLevelGraphX, lowerLevelGraphY);
+                    console.log(graphmenu);
+                    $(graphmenu).fadeIn('slow');
+                    $(graphmenu).click(function() {
+                        console.log(graphmenu);
+                        thisGraph.destroy();
+                        universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu);
+                        $(graphmenu).fadeOut('slow');
                     });
                 }
             },
@@ -157,15 +165,3 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
 
     return graph;
 }
-
-// function d3Graph1(elementHTML, xAxis, yAxis) {
-//     $(elementHTML).dxChart({
-//           dataSource: dataSource,
-//           series: {
-//               argumentField: "day",
-//               valueField: "oranges",
-//               name: "My oranges",
-//               type: "bar",
-//               color: '#ffaa66'
-//           }
-//       });}

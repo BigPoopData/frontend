@@ -143,15 +143,14 @@ getData.onmessage = function(msg) {
     //universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
     //polarArea
     //average Graph
-    neededData.graph1 = universalGraph('bar', "myChart", neededData.averagesPerMonthTimestamps, neededData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps,neededData.averagesPerDayData, 'monthsaverage');
+    neededData.graph1 = universalGraph('bar', "myChart", neededData.averagesPerMonthTimestamps, neededData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps,neededData.averagesPerDayData, '#graphmenu1');
     //interval Graph
-    neededData.graph2 = universalGraph('bar', "myChart2", neededData.averagesPerMonthTimestamps, neededData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps, neededData.intervalsPerDayData, 'monthsinterval');
+    neededData.graph2 = universalGraph('bar', "myChart2", neededData.averagesPerMonthTimestamps, neededData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps, neededData.intervalsPerDayData, '#graphmenu2');
+    //neededData.previousEvebtsGraph
+    // neededData.graph3 = universalGraph('polarArea', "myChart3", serverData.usagePerHour.am, 1, "visits", colorObject.currentColorLessOpacity, false, colorObject.currentColor, "easeInOutExpo");
     //closed open interval
     closedopenGraph(neededData.openPercentageGraphValue, neededData.closedPercentageGraphValue, neededData.closedPercentage);
 
-    $( "#graphmenu1" ).click(function() {
-        neededData.graph1.destroy();
-    });
 
 
     //waypoint for waterusage

@@ -1,7 +1,6 @@
 Errors & Bugs:
 
   * Fix Messages
-  * Fix customgraph/2 not destroyed on status change
   * Fix Closed-Open Ratio Graph Color
   * Graph font
   * Weekdaygraph
