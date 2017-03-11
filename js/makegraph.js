@@ -277,7 +277,6 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
                             callbacks: {
                                 label: function(tooltipItems, data) {
                                     var value = data.datasets[0].data[tooltipItems.index];
-                                    console.log(value);
                                     var label = data.labels[tooltipItems.index];
                                     return data.datasets[tooltipItems.datasetIndex].label + " " + value.y + " minutes";
                                 }
