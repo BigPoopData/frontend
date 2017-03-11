@@ -126,17 +126,77 @@
                         have been counted so far
                         <!-- <span class="currentcolor" id="totaltimespan2">60 days.</span> -->
                     </p>
-                    <p class="clickongraph">
+                    <!-- <p class="clickongraph">
                         Click a graph to show more data
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </div>
     </section>
 
+    <section id="hourly">
+            <div class="columns">
+                <div class="column hourlyreveal">
+                    <p>
+                        <h1 class="graphheadline">total hourly averages</h1>
+                        <hr class="underline" size="10" align="left" />
+
+                    </p>
+                    <p>
+                      AM Averages
+                      <div class="coloredbox currentbackgroundcolor" id="amcolorbox"></div>
+                    </p>
+                    <p>
+                      PM Averages
+                      <div class="coloredbox currentbackgroundcolorfull" id="pmcolorbox"></div>
+                    </p>
+
+                </div>
+                <div class="column is-two-thirds hourlyreveal">
+
+                <div class="chartWrapper">
+                    <div class="chartcontent">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+
+    </section>
+
+    <section id="lastevents">
+        <div class="columns custom-columns">
+            <div class="column is-two-thirds lasteventsreveal">
+                <div class="chartWrapper">
+                    <div class="chartcontent">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="column lasteventsreveal">
+
+                    <h1 class="graphheadline">last events recorded</h1>
+                    <hr class="underline" size="10" align="left" />
+
+
+
+                <p>
+                    need description
+                </p>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+
     <section class="revealonscroll " id="toiletdata">
         <div class="columns centervertically">
-            <div class="column">
+            <div class="column is-half">
                 <div id="watersavings">
                     <p>
                         <h2>
@@ -167,11 +227,11 @@
     </section>
 
     <section class="revealonscroll" id="datasavings">
-        <div class="columns centervertically">
+        <div class="columns centervertically morepadding">
             <div class="column is-half">
                 <img src="img/spy.svg" />
             </div>
-            <div class="column">
+            <div class="column morepadding">
                 <h1>Why?</h1>
                 <h2>
                     <p>
@@ -200,16 +260,15 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="js/lib/lodash.min.js"></script>
     <script src="js/lib/jquery.scrollTo.min.js"></script>
     <script src="js/lib/charts.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="js/lib/chartist.min.js"></script>
     <script src="js/lib/chartist-plugin-fill-donut.min.js"></script>
     <script src="js/lib/waypoint.js"></script>
     <script src="js/lib/countUp.js"></script>
     <script src="js/lib/countUp-jquery.js"></script>
     <script src="https://cdn3.devexpress.com/jslib/16.2.5/js/dx.all.js"></script>
-    <!-- <script src="https://raw.githubusercontent.com/lodash/lodash/4.17.4/dist/lodash.min.js"></script> -->
     <!-- Custom JS -->
     <script src="js/makegraph.js"></script>
     <script src="js/getdata.js"></script>

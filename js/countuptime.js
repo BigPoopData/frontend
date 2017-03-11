@@ -122,6 +122,11 @@ $(document).ready(function() {
 
     sr.reveal('.intervalsreveal', sroptions, 100);
 
+    sr.reveal('.hourlyreveal', sroptions, 100);
+
+    sr.reveal('.lasteventsreveal', sroptions, 100);
+
+
     sr.reveal('.closedopenreveal', sroptions, 200);
 
 });

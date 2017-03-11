@@ -115,19 +115,11 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
                         }
                     }
 
-                    var thisGraph = this;
+                    graph.destroy();
 
+                    graph = universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo", lowerLevelGraphX, lowerLevelGraphY);
 
-                    this.destroy();
-                    thisGraph = universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo", lowerLevelGraphX, lowerLevelGraphY);
-                    console.log(graphmenu);
                     $(graphmenu).fadeIn('slow');
-                    $(graphmenu).click(function() {
-                        console.log(graphmenu);
-                        thisGraph.destroy();
-                        universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu);
-                        $(graphmenu).fadeOut('slow');
-                    });
                 }
             },
 
@@ -163,5 +155,180 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
         }
     });
 
+    $(graphmenu).click(function() {
+        graph.destroy();
+        graph = universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu);
+        $(graphmenu).fadeOut('slow');
+    });
     return graph;
+}
+
+function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor, animationEasing) {
+
+    var lineChartData = {
+        labels: xAxis,
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: yAxis,
+            scaleShowVerticalLines: false,
+            label: ' AM.',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+
+            },{
+            type: chartType,
+            data: yAxis2,
+            scaleShowVerticalLines: false,
+            label: ' PM.',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            tooltips: {
+                titleFontSize: 0,
+                titleSpacing: 0,
+                titleMarginBottom: 0,
+                displayColors: false,
+                enabled: true,
+                mode: 'single',
+                callbacks: {
+
+                    // title: function(tooltipItem, data) {
+                    //     console.log(data.datasets);
+                        // return data.labels[tooltipItem[0].index] + data.datasets[data.datasets[0]].label;
+                    // }
+
+                    label: function(tooltipItem, data) {
+                        var value = data.datasets[0].data[tooltipItem.index];
+                        var label = data.labels[tooltipItem.index];
+                        return label + data.datasets[tooltipItem.datasetIndex].label + " : " + value;
+
+                        // return data.datasets[tooltipItems.datasetIndex].label + ;
+                    }
+
+                }
+            },
+
+            animation: {
+                easing: animationEasing
+            },
+            scale:{
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: false,
+            },
+        }
+    });
+
+    return graph;
+
+}
+
+function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartColor2, animationEasing) {
+    var lineChartData = {
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: data1,
+            scaleShowVerticalLines: false,
+            label: 'Open',
+            backgroundColor: 'transparent',
+            showLine: false,
+            pointBackgroundColor: chartColor,
+
+            },{
+            type: chartType,
+            data: data2,
+            scaleShowVerticalLines: false,
+            label: 'Closed',
+            showLine: false,
+            pointBackgroundColor: chartColor2,
+
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            tooltips: {
+                            enabled: true,
+                            mode: 'single',
+                            callbacks: {
+                                label: function(tooltipItems, data) {
+                                    var value = data.datasets[0].data[tooltipItems.index];
+                                    console.log(value);
+                                    var label = data.labels[tooltipItems.index];
+                                    return data.datasets[tooltipItems.datasetIndex].label + " " + value.y + " minutes";
+                                }
+                            }
+                        },
+            animation: {
+                easing: animationEasing
+            },
+            scale:{
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+
+            scales: {
+            yAxes: [{
+                // display: false,
+                gridLines: {
+                    display:false
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display:false
+                },
+                type: 'time',
+                    time: {
+                        displayFormats: {
+
+                            minute: 'h:mm:ss a',
+
+                            day: 'll'
+                        },
+                        unit: 'week'
+                    }
+                }]
+            }
+        },
+
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: true,
+            },
+        }
+    );
+
+    return graph;
+
 }

@@ -1,4 +1,6 @@
 //Initialize Variables
+var origin = location.origin;
+
 var neededData = {};
 //Some people may call this the mighty wall of Variables
 var serverData = {};
@@ -6,6 +8,7 @@ var waterusage = 0;
 var paperusage = 0;
 var datetimestamp = new Date();
 neededData.graphvalue = 0;
+neededData.oneToTwelve = [0, 1, 2, 3, 4, 5 ,6 ,7, 8, 9, 10, 11];
 
 var colorObject = {};
 colorObject.closedColor = 'rgba(231, 76, 60, ';
@@ -14,7 +17,7 @@ colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
 //connect to websocket
-var getData = new WebSocket("wss://metaklo.nico-rameder.at:8000/ws");
+var getData = new WebSocket( origin.replace(/^(https?):\/\//,"wss://") + "/ws");
 
 //send setup message
 this.send = function(message, callback) {
@@ -59,18 +62,29 @@ getData.onmessage = function(msg) {
             neededData.averagesPerDayData = [];
             neededData.intervalsPerDayData = [];
 
-            for (var j = 0; j < neededData.averagesPerMonthObject.length; j++) {
-                neededData.averagesPerMonthTimestamps.push(neededData.averagesPerMonthObject[j].timestamp);
-                neededData.averagesPerMonthData.push(Math.floor((neededData.averagesPerMonthObject[j].average / 60) * 100) / 100);
-                neededData.intervalsPerMonthData.push(neededData.averagesPerMonthObject[j].intervals);
 
-            }
-            for (var k = 0; k < neededData.averagesPerDayObject.length; k++) {
-                neededData.averagesPerDayTimestamps.push(neededData.averagesPerDayObject[k].timestamp);
-                neededData.averagesPerDayData.push(Math.floor((neededData.averagesPerDayObject[k].average / 60) * 100) / 100);
-                neededData.intervalsPerDayData.push(neededData.averagesPerDayObject[k].intervals);
+            function roundToMilliseconds(num) {
+                    return Math.floor((num.average / 60) * 100) / 100;
+                }
 
-            }
+            neededData.usagePerHourAm = _.map(serverData.usagePerHour.am, roundToMilliseconds);
+            neededData.usagePerHourPm = _.map(serverData.usagePerHour.pm, roundToMilliseconds);
+
+            neededData.totalEventsOpen = _.map(serverData.total.events.open, function (item){
+                return {x: item.from, y: Math.round(item.duration / 60 / 60 * 100)/100};
+            });
+            neededData.totalEventsClosed = _.map(serverData.total.events.closed, function (item){
+                return {x: item.from, y: Math.round(item.duration / 60 / 60 * 100)/100};
+            });
+
+            neededData.averagesPerMonthTimestamps = _.map(neededData.averagesPerMonthObject, 'timestamp');
+            neededData.averagesPerMonthData = _.map(neededData.averagesPerMonthObject, roundToMilliseconds);
+            neededData.intervalsPerMonthData = _.map(neededData.averagesPerMonthObject, 'intervals');
+
+            neededData.averagesPerDayTimestamps = _.map(neededData.averagesPerDayObject, 'timestamp');
+            neededData.averagesPerDayData = _.map(neededData.averagesPerDayObject, roundToMilliseconds);
+            neededData.intervalsPerDayData = _.map(neededData.averagesPerDayObject, 'intervals');
+
             neededData.closedPercentage = serverData.closedOpenRatio.closedPercentage;
             neededData.openPercentage = serverData.closedOpenRatio.openPercentage;
             neededData.openPercentageGraphValue = 220 * serverData.closedOpenRatio.openPercentage / 100;
@@ -83,27 +97,20 @@ getData.onmessage = function(msg) {
             $('#totalminutes').text(Math.floor(serverData.total.duration.closed / 60 / 60 / 24 * 100)/100 + ' days');
             $('#totalaverage').text(Math.floor(serverData.total.average.closed / 60 * 100) / 100 + ' minutes');
             $('#totalintervals').text(serverData.total.intervals.closed + ' intervals');
-
-            neededData.totalRecordingDays = Math.floor( (new Date() - Date.parse(neededData.averagesPerDayObject[0].timestamp))/1000/60/60/24) ;
             $('#totaltimespan').text(neededData.totalRecordingDays + ' days');
 
-
-
+            neededData.totalRecordingDays = Math.floor( (new Date() - Date.parse(neededData.averagesPerDayObject[0].timestamp))/1000/60/60/24) ;
             paperusage = Math.floor(serverData.total.toiletPaperUsage.value * 100) / 100;
             break;
 
         case "sitzklo":
             neededData.currentstatus = JSON.parse(msg.data).open;
             neededData.timedurationelapsed = 0;
-            for (var m; m < neededData.graphvalue; m++){
-                myChartArray[m].destroy();
-                console.log('destroy');
-            }
 
             neededData.graph1.destroy();
             neededData.graph2.destroy();
-
-
+            neededData.graph3.destroy();
+            neededData.graph4.destroy();
             break;
     }
 
@@ -122,6 +129,10 @@ getData.onmessage = function(msg) {
             $('#status').text('open');
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
+            $('.currentbackgroundcolor').css("background-color", colorObject.currentColorLessOpacity);
+            $('.currentbackgroundcolorfull').css("background-color", colorObject.currentColor);
+
+
             $('.ct-slice-donut').css("stroke", colorObject.currentColor );
             $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
             $('.currentcolorfull').css("color", colorObject.currentColor);
@@ -135,6 +146,9 @@ getData.onmessage = function(msg) {
             $('#status').text('occupied');
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
+            $('.currentbackgroundcolorfull').css("background-color", colorObject.currentColor);
+
+            $('.currentbackgroundcolor').css("background-color", colorObject.currentColorLessOpacity);
             $('.ct-chart-donut .ct-series-a .ct-slice-donut').css("stroke", colorObject.currentColorLessOpacity);
             $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
     }
@@ -147,7 +161,10 @@ getData.onmessage = function(msg) {
     //interval Graph
     neededData.graph2 = universalGraph('bar', "myChart2", neededData.averagesPerMonthTimestamps, neededData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps, neededData.intervalsPerDayData, '#graphmenu2');
     //neededData.previousEvebtsGraph
-    // neededData.graph3 = universalGraph('polarArea', "myChart3", serverData.usagePerHour.am, 1, "visits", colorObject.currentColorLessOpacity, false, colorObject.currentColor, "easeInOutExpo");
+    neededData.graph3 = twoInOneGraph('radar', 'myChart3', neededData.usagePerHourAm, neededData.usagePerHourPm, neededData.oneToTwelve, colorObject.currentColorLessOpacity, "easeInOutExpo");
+
+    neededData.graph4 = lineInOneGraph('line', 'myChart4', neededData.totalEventsOpen, neededData.totalEventsClosed, colorObject.openColor + colorObject.alphaFull, colorObject.closedColor + colorObject.alphaFull, "easeInOutExpo");
+
     //closed open interval
     closedopenGraph(neededData.openPercentageGraphValue, neededData.closedPercentageGraphValue, neededData.closedPercentage);
 
