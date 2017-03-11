@@ -49,9 +49,8 @@ function closedopenGraph(val1, val2, displayedPercentage) {
     });
 }
 
-var myChartArray = [];
 
-function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY) {
+function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu) {
     var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
@@ -63,13 +62,12 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
             label: 'Bar Component',
             backgroundColor: chartColor,
             hoverBackgroundColor: chartHoverColor
-
         }]
     };
 
     var ctx = document.getElementById(elementHTML);
 
-    myChartArray[neededGraphData.graphvalue] = new Chart(ctx, {
+    var graph = new Chart(ctx, {
         type: chartType,
         data: lineChartData,
         options: {
@@ -102,6 +100,7 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
 
 
                     //lowerLevelGraphX, lowerLevelGraphY
+
                     for (var l = 0; l < lowerLevelGraphX.length; l++) {
                         var getMonths = {};
                         getMonths.checkIt = moment(lowerLevelGraphX[l]);
@@ -115,8 +114,12 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
                             activeElementGraphData.y.push(lowerLevelGraphY[l]);
                         }
                     }
-                    this.destroy();
-                    universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo");
+
+                    graph.destroy();
+
+                    graph = universalGraph('bar', elementHTML, activeElementGraphData.x, activeElementGraphData.y, tooltipMessage, colorObject.currentColorLessOpacity, false, colorObject.currentColorLessOpacity, "easeInOutExpo", lowerLevelGraphX, lowerLevelGraphY);
+
+                    $(graphmenu).fadeIn('slow');
                 }
             },
 
@@ -151,17 +154,315 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
             },
         }
     });
-    neededGraphData.graphvalue++;
+
+    $(graphmenu).click(function() {
+        graph.destroy();
+        graph = universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu);
+        $(graphmenu).fadeOut('slow');
+    });
+    return graph;
 }
 
-// function d3Graph1(elementHTML, xAxis, yAxis) {
-//     $(elementHTML).dxChart({
-//           dataSource: dataSource,
-//           series: {
-//               argumentField: "day",
-//               valueField: "oranges",
-//               name: "My oranges",
-//               type: "bar",
-//               color: '#ffaa66'
-//           }
-//       });}
+function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor, animationEasing) {
+
+    var lineChartData = {
+        labels: xAxis,
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: yAxis,
+            scaleShowVerticalLines: false,
+            label: ' AM.',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+
+            },{
+            type: chartType,
+            data: yAxis2,
+            scaleShowVerticalLines: false,
+            label: ' PM.',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            tooltips: {
+                titleFontSize: 0,
+                titleSpacing: 0,
+                titleMarginBottom: 0,
+                displayColors: false,
+                enabled: true,
+                mode: 'single',
+                callbacks: {
+
+                    // title: function(tooltipItem, data) {
+                    //     console.log(data.datasets);
+                        // return data.labels[tooltipItem[0].index] + data.datasets[data.datasets[0]].label;
+                    // }
+
+                    label: function(tooltipItem, data) {
+                        var value = data.datasets[0].data[tooltipItem.index];
+                        var label = data.labels[tooltipItem.index];
+                        return label + data.datasets[tooltipItem.datasetIndex].label + " : " + value;
+
+                        // return data.datasets[tooltipItems.datasetIndex].label + ;
+                    }
+
+                }
+            },
+
+            animation: {
+                easing: animationEasing
+            },
+            scale:{
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: false,
+            },
+        }
+    });
+
+    return graph;
+
+}
+
+function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartColor2, animationEasing) {
+    var lineChartData = {
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: data1,
+            scaleShowVerticalLines: false,
+            label: 'Open',
+            backgroundColor: 'transparent',
+            showLine: false,
+            pointBackgroundColor: chartColor,
+
+            },{
+            type: chartType,
+            data: data2,
+            scaleShowVerticalLines: false,
+            label: 'Closed',
+            showLine: false,
+            pointBackgroundColor: chartColor2,
+
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            tooltips: {
+                            enabled: true,
+                            mode: 'single',
+                            callbacks: {
+                                label: function(tooltipItems, data) {
+                                    var value = data.datasets[0].data[tooltipItems.index];
+                                    console.log(value);
+                                    var label = data.labels[tooltipItems.index];
+                                    return data.datasets[tooltipItems.datasetIndex].label + " " + value.y + " minutes";
+                                }
+                            }
+                        },
+            animation: {
+                easing: animationEasing
+            },
+            scale:{
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+
+            scales: {
+            yAxes: [{
+                // display: false,
+                gridLines: {
+                    display:false
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display:false
+                },
+                type: 'time',
+                    time: {
+                        displayFormats: {
+
+                            minute: 'h:mm:ss a',
+
+                            day: 'll'
+                        },
+                        unit: 'week'
+                    }
+                }]
+            }
+        },
+
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: true,
+            },
+        }
+    );
+
+    return graph;
+
+}
+
+function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor, animationEasing) {
+
+    var lineChartData = {
+        labels: xAxis,
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: yAxis,
+            scaleShowVerticalLines: false,
+            label: 'Bar Component',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+            },{
+            type: chartType,
+            data: yAxis2,
+            scaleShowVerticalLines: false,
+            label: 'Bar Component',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            animation: {
+                easing: animationEasing
+            },
+            scale:{
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+
+            scales: {
+            //
+            //     xAxes: [{
+            //         borderWidth: 0,
+            //         gridLines: {
+            //             display: false,
+            //             drawBorder: false
+            //         }
+            //     }],
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: false,
+            },
+        }
+    });
+
+    return graph;
+
+}
+
+function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartColor2, animationEasing) {
+    var lineChartData = {
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: data1,
+            scaleShowVerticalLines: false,
+            label: 'Open',
+            backgroundColor: 'transparent',
+            showLine: false,
+            pointBackgroundColor: chartColor,
+
+            },{
+            type: chartType,
+            data: data2,
+            scaleShowVerticalLines: false,
+            label: 'Closed',
+            showLine: false,
+            pointBackgroundColor: chartColor2,
+
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            animation: {
+                easing: animationEasing
+            },
+            scales: {
+            yAxes: [{
+                display: false,
+                gridLines: {
+                    display:false
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display:false
+                },
+                type: 'time',
+                    time: {
+                        displayFormats: {
+                            minute: 'h:mm:ss a',
+                            day: 'll'
+                        }
+                    }
+                }]
+            }
+        },
+
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: true,
+            },
+        }
+    );
+
+    return graph;
+
+}
