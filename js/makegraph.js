@@ -165,3 +165,137 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
 
     return graph;
 }
+
+function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor, animationEasing) {
+
+    var lineChartData = {
+        labels: xAxis,
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: yAxis,
+            scaleShowVerticalLines: false,
+            label: 'Bar Component',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+            },{
+            type: chartType,
+            data: yAxis2,
+            scaleShowVerticalLines: false,
+            label: 'Bar Component',
+            backgroundColor: chartColor,
+            hoverBackgroundColor: chartColor,
+
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            animation: {
+                easing: animationEasing
+            },
+            scale:{
+                ticks: {
+                    beginAtZero: true
+                }
+            },
+
+            scales: {
+            //
+            //     xAxes: [{
+            //         borderWidth: 0,
+            //         gridLines: {
+            //             display: false,
+            //             drawBorder: false
+            //         }
+            //     }],
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: false,
+            },
+        }
+    });
+
+    return graph;
+
+}
+
+function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartColor2, animationEasing) {
+    var lineChartData = {
+        scaleShowVerticalLines: true,
+        datasets: [{
+            type: chartType,
+            data: data1,
+            scaleShowVerticalLines: false,
+            label: 'Open',
+            backgroundColor: 'transparent',
+            showLine: false,
+            pointBackgroundColor: chartColor,
+
+            },{
+            type: chartType,
+            data: data2,
+            scaleShowVerticalLines: false,
+            label: 'Closed',
+            showLine: false,
+            pointBackgroundColor: chartColor2,
+
+        }]
+    };
+
+    var ctx = document.getElementById(elementHTML);
+
+    var graph = new Chart(ctx, {
+        type: chartType,
+        data: lineChartData,
+        options: {
+            animation: {
+                easing: animationEasing
+            },
+            scales: {
+            yAxes: [{
+                display: false,
+                gridLines: {
+                    display:false
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display:false
+                },
+                type: 'time',
+                    time: {
+                        displayFormats: {
+                            minute: 'h:mm:ss a',
+                            day: 'll'
+                        }
+                    }
+                }]
+            }
+        },
+
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+                fontFamily: 'Montserrat',
+                fontStlye: 'bold',
+            },
+            legend: {
+                display: true,
+            },
+        }
+    );
+
+    return graph;
+
+}
