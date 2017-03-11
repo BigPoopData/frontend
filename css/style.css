@@ -25,6 +25,11 @@ section {
     section {
         padding: 0 15%;
     }
+
+    .custom-columns {
+        flex-direction: column-reverse;
+        display: flex;
+  }
 }
 
 section {
@@ -44,8 +49,8 @@ section {
 
 .se-pre-con {
     position: fixed;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: 9999;
@@ -54,22 +59,12 @@ section {
 
 .se-pre-con-text {
     position: fixed;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: 9999;
 }
-
-.nav {
-    box-shadow: 0 0px 0 rgba(219, 219, 219, 0.3) !important;
-}
-
-#nav-toggle:hover {
-    background-color: rgba(39, 174, 96, 1.0);
-}
-
-.nav-item {}
 
 div #main-content {
     display: none;
@@ -163,26 +158,24 @@ section {
     text-align: left;
     background-color: #AEF3FC;
     /*background-image: url('../img/bg1.jpg');*/
-    background-image: url('../img/bathroom.svg');
+    /*background-image: url('../img/bathroom.svg');*/
     background-position: 75%;
     background-size: 80vh;
     background-repeat: no-repeat;
     margin-top: 2.5%;
     color: white;
     min-height: 100%;
-    position: relative;
+    /*position: relative;*/
 }
 
 #watersavings {
-    position: absolute;
+    /*position: absolute;
     /*padding-top: 20vh;*/
-    top: 25%;
+    /*top: 25%;*/
 }
 
 #papersavings {
-    position: absolute;
-    /*padding-top: 15vh;*/
-    bottom: 25%;
+    padding-top: 10%;
 }
 
 .statusmessage {
@@ -316,7 +309,7 @@ section {
     bottom: 10%;
     left: 0;
     animation: bounceupdown 5s infinite;
-    transition-timing-function: ease-in;
+    transition-timing-function: ease;
 }
 
 @keyframes bounceupdown {
@@ -324,7 +317,7 @@ section {
         bottom: 4%;
     }
     50% {
-        bottom: 6%;
+        bottom: 5%;
     }
     100% {
         bottom: 4%;
@@ -360,4 +353,35 @@ section {
 
 .clickongraph {
     padding-top: 40%;
+}
+
+#graphmenu1 {
+  display: none;
+
+}
+
+#graphmenu2 {
+  /*padding-right: 5%;
+  padding-left: 5%;*/
+  display: none;
+}
+
+.graphmenuwrapper {
+    /*width: 100%;*/
+    text-align: right;
+    color: #626262;
+    height: 5vh;
+    width: 100%;
+}
+
+#datasavings {
+    text-align: left;
+    background-color: #101423;
+    color: white;
+    min-height: 100%;
+}
+
+.centervertically {
+  position: relative;
+    transform: translateY(25vh);
 }

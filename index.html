@@ -30,6 +30,7 @@
 </head>
 
 <body>
+    <!-- Lazy Loading picture -->
     <div class="se-pre-con"></div>
 
     <section class="hero is-fullheight statuscolor" id="header">
@@ -78,10 +79,10 @@
                 <hr class="underline" size="10" align="left" />
                 <div class="graphtextwrapper">
                     <p>
-                        were spent on the toilet over a timespan of <span class="currentcolor" id="totaltimespan">60 days.</span>
+                        were spent on the toilet over a timespan of <span class="currentcolor" id="totaltimespan">more than 150 days.</span>
                     </p>
                     <p>
-                        Visitors spent an average of <span class="currentcolor" id="totalaverage">6 minutes</span><br />on the toilet
+                        Visitors spent an average of <span class="currentcolor" id="totalaverage">~2 minutes</span><br />on the toilet
                     </p>
                     <p class="clickongraph">
                         Click a graph to show more data
@@ -89,6 +90,10 @@
                 </div>
             </div>
             <div class="column is-two-thirds averagesreveal">
+                <div class="graphmenuwrapper">
+                    <a class="currentcolor" id="graphmenu1">🠜 back to months</a>
+                </div>
+
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart"></canvas>
@@ -100,9 +105,12 @@
     </section>
 
     <section id="intervals">
-        <div class="columns">
+        <div class="columns custom-columns">
             <hr />
             <div class="column is-two-thirds intervalsreveal">
+                <div class="graphmenuwrapper">
+                    <a class="currentcolor" id="graphmenu2">🠜 back to months</a>
+                </div>
                 <div class="chartWrapper">
                     <div class="chartcontent">
                         <canvas id="myChart2"></canvas>
@@ -118,9 +126,6 @@
                         have been counted so far
                         <!-- <span class="currentcolor" id="totaltimespan2">60 days.</span> -->
                     </p>
-                    <p>
-                        Visitors spent an average of <span class="currentcolor" id="totalintervalstime">6 minutes</span><br />on the toilet
-                    </p>
                     <p class="clickongraph">
                         Click a graph to show more data
                     </p>
@@ -129,29 +134,96 @@
         </div>
     </section>
 
+    <section id="hourlygraph">
+            <div class="columns">
+                <div class="column">
+                    <p>
+                        <h1 class="graphheadline">total hourly averages</h1>
+                        <hr class="underline" size="10" align="left" />
+
+                    </p>
+                    <p>
+                        AM Averages
+                    </p>
+                    <p>
+                        PM Averages
+                    </p>
+
+                </div>
+                <div class="column">
+
+                <div class="chartWrapper">
+                    <div class="chartcontent">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+
+    </section>
+
+    <section id="lol2">
+                <div class="chartWrapper">
+                    <div class="chartcontent">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+                </div>
+
+    </section>
 
 
 
-    <section class="revealonscroll" id="toiletdata">
-        <div id="watersavings">
-            <p>
 
-                <h2>
-              since 22. November 2016
-          </h2>
-            </p>
+    <section class="revealonscroll " id="toiletdata">
+        <div class="columns centervertically">
+            <div class="column">
+                <div id="watersavings">
+                    <p>
+                        <h2>
+				         since 22. November 2016
+					    </h2>
+                    </p>
 
-            <h1><span id="waternumbers">~20.000</span> Litres</h1>
-            <h2>
-              of Water have been flushed
-          </h2>
+                    <h1>
+						<span id="waternumbers">~20.000</span>
+						Litres
+					</h1>
+                    <h2>
+				       of Water have been flushed
+				     </h2>
+                </div>
+
+                <div id="papersavings">
+                    <h1><span id="papernumbers">~40</span> Rolls</h1>
+                    <h2>
+				      of Toilet paper have been used
+				    </h2>
+                </div>
+            </div>
+            <div class="column">
+                <img src="img/bathroom.svg" />
+            </div>
         </div>
+    </section>
 
-        <div id="papersavings">
-            <h1><span id="papernumbers">~40</span> Rolls</h1>
-            <h2>
-                of Toilet paper have been used
-            </h2>
+    <section class="revealonscroll" id="datasavings">
+        <div class="columns centervertically">
+            <div class="column is-half">
+                <img src="img/spy.svg" />
+            </div>
+            <div class="column">
+                <h1>Why?</h1>
+                <h2>
+                    <p>
+                        Big Poop Data tries to underline the absurdity and obsolescence of past and future data-collection programs with a cynical and satirical twist.
+                    </p>
+                    <p>
+                        The website shows the real-time state and compiles statistics on the fly.
+                    </p>
+                </h2>
+            </div>
         </div>
     </section>
 
@@ -164,14 +236,15 @@
             </div>
         </div>
     </section>
+
     <!-- JS -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="js/lib/lodash.min.js"></script>
     <script src="js/lib/jquery.scrollTo.min.js"></script>
     <script src="js/lib/charts.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="js/lib/chartist.min.js"></script>
     <script src="js/lib/chartist-plugin-fill-donut.min.js"></script>
     <script src="js/lib/waypoint.js"></script>
