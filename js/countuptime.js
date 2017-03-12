@@ -6,7 +6,7 @@ var sec = 'getting data';
 
 function setTimerDurationElapsed(timeintevalarg) {
     sec = timeintevalarg;
-    console.log("sec changed --> " + sec);
+    // console.log("sec changed --> " + sec);
 }
 
 function pad(val) {

@@ -133,7 +133,7 @@ getData.onmessage = function(msg) {
 
     setTimerDurationElapsed(neededData.timedurationelapsed);
 
-    console.log(serverData);
+    // console.log(serverData);
 
     switch (neededData.currentstatus) {
         case "true":

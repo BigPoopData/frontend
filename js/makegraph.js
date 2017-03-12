@@ -315,7 +315,8 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
                 // display: false,
                 gridLines: {
                     display:false
-                }
+                },
+                type: 'logarithmic'
             }],
             xAxes: [{
                 gridLines: {
