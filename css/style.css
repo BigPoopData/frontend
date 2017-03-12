@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900');
 font-family: 'Montserrat', sans-serif;
-
 * {
     margin: 0;
     padding: 0;
@@ -22,36 +21,29 @@ section {
 }
 
 #underlineclosedopen {
-  margin: auto;
-  width: 50%;
-  height: 3px;
-  color: grey;
-  display: none
+    margin: auto;
+    width: 50%;
+    height: 3px;
+    color: grey;
+    display: none
 }
 
 @media only screen and (max-width:768px) {
     section {
-        padding:5% 15%;
+        padding: 5% 15%;
     }
-
     .custom-columns {
         flex-direction: column-reverse;
         display: flex;
-  }
-
-  #toiletdata h1 {
-    white-space: normal !important;
-  }
-
-
-  #underlineclosedopen {
-    display: block;
-    margin-bottom: 5%;
-    margin-top: 5%;
-  }
-
-
-
+    }
+    #toiletdata h1 {
+        white-space: normal !important;
+    }
+    #underlineclosedopen {
+        display: block;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
 }
 
 .no-js #loader {
@@ -65,7 +57,6 @@ section {
     top: 0;
 }
 
-
 .se-pre-con {
     position: fixed;
     left: 0;
@@ -76,7 +67,6 @@ section {
     background: url(../img/loading_loop.gif) center no-repeat #fff;
     /*background: center no-repeat #fff;*/
     transition: background-image 0.1s ease;
-
     background-size: 60vw;
 }
 
@@ -90,10 +80,8 @@ section {
     background: url(../img/loading_finish.gif) center no-repeat #fff;
     /*background: center no-repeat #fff;*/
     transition: background-image 0.1s ease;
-
     background-size: 60vw;
 }
-
 
 .se-pre-con-text {
     position: fixed;
@@ -134,8 +122,6 @@ div #main-content {
     #logoMobile {
         display: block;
     }
-
-
 }
 
 .nav-toggle span {
@@ -151,15 +137,14 @@ div #main-content {
     font-weight: 700 !important;
 }
 
-.hero.is-fullheight  {
-  min-height: 100%;
-  max-height: 100%;
+.hero.is-fullheight {
+    min-height: 100%;
+    max-height: 100%;
 }
 
 h1 {
     font-size: 4.2em;
     font-weight: 600;
-
 }
 
 h2 {
@@ -167,10 +152,10 @@ h2 {
 }
 
 p {
-  padding-top: 2.5%;
+    padding-top: 2.5%;
 }
 
-.graphheadline {
+.adline {
     font-size: 3em;
 }
 
@@ -213,19 +198,19 @@ p {
     padding-top: 10%;
     padding-bottom: 10%;
     max-width: 100%;
-
     /*position: relative;*/
 }
-#toiletdata h1 {
-  white-space: nowrap;
-}
 
+#toiletdata h1 {
+    white-space: nowrap;
+}
 
 #watersavings {
     /*position: absolute;
     /*padding-top: 20vh;*/
     /*top: 25%;*/
 }
+
 
 /*#waternumbers {
   white-space: nowrap;
@@ -236,7 +221,6 @@ p {
   white-space: nowrap;
 
 }*/
-
 
 #papersavings {
     padding-top: 10%;
@@ -293,7 +277,7 @@ p {
 }
 
 .chartwrapperlesswidth {
-  height: 30%;
+    height: 30%;
 }
 
 .underline {
@@ -389,6 +373,7 @@ p {
     }
 }
 
+
 /*.flexOverwrite {
     align-items: stretch !important;
     margin-top: 1vh;
@@ -398,22 +383,23 @@ p {
     margin-top: -3%;
 }
 
-.graphtextwrapper p{
+.graphtextwrapper p {
     padding-bottom: 5%;
 }
 
 #scroll:after {
-	content: '';
-	display: block;
-	margin: auto;
-	height: 3px;
-	width: 0px;
-	background: transparent;
-	transition: width .5s ease, background-color .5s ease;
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
 }
+
 #scroll:hover:after {
-	width: 10vw;
-	background: white;
+    width: 10vw;
+    background: white;
 }
 
 .clickongraph {
@@ -421,14 +407,13 @@ p {
 }
 
 #graphmenu1 {
-  display: none;
-
+    display: none;
 }
 
 #graphmenu2 {
-  /*padding-right: 5%;
+    /*padding-right: 5%;
   padding-left: 5%;*/
-  display: none;
+    display: none;
 }
 
 .graphmenuwrapper {
@@ -446,32 +431,48 @@ p {
     padding-top: 10%;
     padding-bottom: 10%;
     max-width: 100%;
-
 }
 
 .centervertically {
-  align-items: center;
+    align-items: center;
     justify-content: center;
 }
 
 .coloredbox {
-  width: 15%;
-  height: 5px;
-
+    width: 15%;
+    height: 5px;
 }
 
-#hourly {
-}
+#hourly {}
 
 .morepadding {
-  padding: 2rem;
+    padding: 2rem;
 }
 
 #hourtooltip {
-  font-weight: bold;
-  font-family: Montserrat
+    font-weight: bold;
+    font-family: Montserrat
 }
 
 #since {
-  padding-top: 10%;
+    padding-top: 10%;
+}
+
+#quote {
+    display: none;
+    text-align: center !important;
+    font-size: 1.4em;
+    width: 100%;
+
+
+}
+
+#author {
+    padding-top: 2.5%;
+    text-align: center;
+
+}
+
+#quotes {
+    height:45%;
 }

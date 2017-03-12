@@ -316,7 +316,7 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
                                     min: 0,
                                     max: 3600
                                 },
-                // display: false,
+                display: false,
                 gridLines: {
                     display:false
                 },
