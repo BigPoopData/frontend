@@ -279,6 +279,7 @@
         var firsttime = true;
         var gifduration = 900
         var intervalID = setInterval(function() {
+            console.log(Math.floor(neededData.timeonsite / 10) * 10);
            neededData.timeonsite = new Date() - timeonload;
            if (neededData.serverup && (Math.floor(neededData.timeonsite / 10) * 10  % gifduration === 0) && firsttime){
 
