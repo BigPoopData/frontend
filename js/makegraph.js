@@ -25,6 +25,7 @@ function closedopenGraph(val1, val2, displayedPercentage) {
     chart.on('draw', function(data) {
         if (data.type === 'slice' && data.index === 0) {
             var pathLength = data.element._node.getTotalLength();
+            var g = data.element._node;
 
 
             data.element.attr({
@@ -45,6 +46,16 @@ function closedopenGraph(val1, val2, displayedPercentage) {
                 'stroke-dashoffset': -pathLength + 'px'
             });
             data.element.animate(animationDefinition, true);
+
+            if (g.parentNode.classList[1] === "ct-series-a")
+            {
+                data.element.attr({
+                    style: 'stroke:' + colorObject.currentColorLessOpacity,
+                    'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+
+                });
+            }
+
         }
     });
 }
@@ -65,7 +76,7 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
         }]
     };
 
-    var ctx = document.getElementById(elementHTML);
+    var ctx = document.getElementById(elementHTML).getContext("2d");
 
     var graph = new Chart(ctx, {
         type: chartType,
@@ -163,7 +174,7 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
     return graph;
 }
 
-function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor, animationEasing) {
+function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor, chartcolor2, animationEasing) {
 
     var lineChartData = {
         labels: xAxis,
@@ -181,12 +192,12 @@ function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor,
             data: yAxis2,
             scaleShowVerticalLines: false,
             label: ' PM.',
-            backgroundColor: chartColor,
-            hoverBackgroundColor: chartColor,
+            backgroundColor: chartcolor2,
+            hoverBackgroundColor: chartcolor2,
         }]
     };
 
-    var ctx = document.getElementById(elementHTML);
+    var ctx = document.getElementById(elementHTML).getContext("2d");
 
     var graph = new Chart(ctx, {
         type: chartType,
@@ -209,7 +220,7 @@ function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor,
                     label: function(tooltipItem, data) {
                         var value = data.datasets[0].data[tooltipItem.index];
                         var label = data.labels[tooltipItem.index];
-                        return label + data.datasets[tooltipItem.datasetIndex].label + " : " + value;
+                        return label + data.datasets[tooltipItem.datasetIndex].label + " : " + value + " minutes";
 
                         // return data.datasets[tooltipItems.datasetIndex].label + ;
                     }
@@ -265,7 +276,7 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
         }]
     };
 
-    var ctx = document.getElementById(elementHTML);
+    var ctx = document.getElementById(elementHTML).getContext("2d");
 
     var graph = new Chart(ctx, {
         type: chartType,
@@ -276,9 +287,17 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
                             mode: 'single',
                             callbacks: {
                                 label: function(tooltipItems, data) {
-                                    var value = data.datasets[0].data[tooltipItems.index];
+
+
+                                    var value = data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index];
+                                    if (value.y > 60) {
+                                        endvalue = Math.floor(value.y / 60 % 60 * 100) / 100 + " hours";
+                                    } else {
+                                        endvalue = value.y + " minutes";
+                                    }
+
                                     var label = data.labels[tooltipItems.index];
-                                    return data.datasets[tooltipItems.datasetIndex].label + " " + value.y + " minutes";
+                                    return data.datasets[tooltipItems.datasetIndex].label + " for " + endvalue;
                                 }
                             }
                         },
@@ -287,7 +306,7 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
             },
             scale:{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: false
                 }
             },
 
@@ -310,7 +329,7 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
 
                             day: 'll'
                         },
-                        unit: 'week'
+                        // unit: 'days'
                     }
                 }]
             }
