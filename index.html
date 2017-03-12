@@ -79,6 +79,31 @@
     </section>
 
     <hr id="underlineclosedopen" size="10" />
+    <section id="lastevents">
+        <div class="columns custom-columns">
+            <div class="column is-two-thirds lasteventsreveal">
+                <div class="">
+                    <div class="chartcontent">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="column lasteventsreveal">
+
+                <h1 class="graphheadline">last events</h1>
+                <hr class="underline" size="10" align="left" />
+
+
+
+                <p>
+                    the last 100 Events that have been recorded
+                </p>
+
+            </div>
+        </div>
+
+    </section>
+
     <section class="foo" id="average">
         <div class="columns" id="main-content">
             <div class="column averagesreveal">
@@ -107,36 +132,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <section id="intervals">
-        <div class="columns custom-columns">
-            <hr />
-            <div class="column is-two-thirds intervalsreveal">
-                <div class="graphmenuwrapper">
-                    <a class="currentcolor" id="graphmenu2">🠜 back to months</a>
-                </div>
-                <div class="chartWrapper">
-                    <div class="chartcontent">
-                        <canvas id="myChart2"></canvas>
-                    </div>
-                </div>
-
-            </div>
-            <div class="column intervalsreveal">
-                <h1 class="graphheadline" id="totalintervals">more than 2000 intervals</h1>
-                <hr class="underline" size="10" align="left" />
-                <div class="graphtextwrapper">
-                    <p>
-                        have been counted so far
-                        <!-- <span class="currentcolor" id="totaltimespan2">60 days.</span> -->
-                    </p>
-                    <!-- <p class="clickongraph">
-                        Click a graph to show more data
-                    </p> -->
-                </div>
             </div>
         </div>
     </section>
@@ -173,40 +168,42 @@
 
     </section>
 
-    <section id="lastevents">
-        <div class="columns custom-columns">
-            <div class="column is-two-thirds lasteventsreveal">
-                <div class="">
+    <section id="intervals">
+        <div class="columns">
+            <hr />
+            <div class="column intervalsreveal">
+                <h1 class="graphheadline" id="totalintervals">more than 2000 intervals</h1>
+                <hr class="underline" size="10" align="left" />
+                <div class="graphtextwrapper">
+                    <p>
+                        have been counted so far
+                        <!-- <span class="currentcolor" id="totaltimespan2">60 days.</span> -->
+                    </p>
+                    <!-- <p class="clickongraph">
+                    Click a graph to show more data
+                </p> -->
+            </div>
+        </div>
+            <div class="column is-two-thirds intervalsreveal">
+                <div class="graphmenuwrapper">
+                    <a class="currentcolor" id="graphmenu2">🠜 back to months</a>
+                </div>
+                <div class="chartWrapper">
                     <div class="chartcontent">
-                        <canvas id="myChart4"></canvas>
+                        <canvas id="myChart2"></canvas>
                     </div>
                 </div>
-            </div>
-            <div class="column lasteventsreveal">
-
-                    <h1 class="graphheadline">last events recorded</h1>
-                    <hr class="underline" size="10" align="left" />
-
-
-
-                <p>
-                    need description
-                </p>
 
             </div>
         </div>
-
     </section>
+
+
 
     <section class="revealonscroll " id="toiletdata">
         <div class="columns centervertically">
             <div class="column is-half">
                 <div id="watersavings">
-                    <p>
-                        <h2>
-				         since 22. November 2016
-					    </h2>
-                    </p>
 
                     <h1>
 						<span id="waternumbers">~20.000</span>
@@ -223,6 +220,11 @@
 				      of Toilet paper have been used
 				    </h2>
                 </div>
+                <p>
+                    <h2 id="since">
+                        since 22. November 2016
+                    </h2>
+                </p>
             </div>
             <div class="column">
                 <img src="img/bathroom.svg" />

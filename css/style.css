@@ -17,7 +17,7 @@ body {
 
 section {
     position: relative;
-    padding: 5% 15%;
+    padding: 2% 15%;
     box-sizing: border-box;
 }
 
@@ -31,7 +31,7 @@ section {
 
 @media only screen and (max-width:768px) {
     section {
-        padding: 0 15%;
+        padding:5% 15%;
     }
 
     .custom-columns {
@@ -52,10 +52,6 @@ section {
 
 
 
-}
-
-section {
-    padding: 0 15%;
 }
 
 .no-js #loader {
@@ -197,11 +193,6 @@ p {
     color: white !important;
 }
 
-section {
-    padding-top: 2.5%;
-
-}
-
 #average {
     width: 100%;
 }
@@ -324,7 +315,6 @@ section {
 }
 
 #intervals {
-    padding-top: 8%;
     padding-bottom: 5%;
 }
 
@@ -472,8 +462,6 @@ section {
 }
 
 #hourly {
-  padding-top: 2%;
-  padding-bottom: 3.5%;
 }
 
 .morepadding {
@@ -483,4 +471,8 @@ section {
 #hourtooltip {
   font-weight: bold;
   font-family: Montserrat
+}
+
+#since {
+  padding-top: 10%;
 }
