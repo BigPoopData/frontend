@@ -79,7 +79,7 @@ section {
     z-index: 9999;
     background: url(../img/loading_loop.gif) center no-repeat #fff;
     /*background: center no-repeat #fff;*/
-    transition: background-image 0.5s ease;
+    transition: background-image 0.1s ease;
 
     background-size: 60vw;
 }
