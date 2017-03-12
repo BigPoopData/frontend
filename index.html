@@ -274,19 +274,19 @@
     <script src="js/getdata.js"></script>
     <script src="js/countuptime.js"></script>
     <script>
-        var timeonload
-        var firsttime = true;
         window.onload=function(){
-         timeonload = new Date();
-         var intervalID = setInterval(function() {
+        var timeonload = new Date();
+        var firsttime = true;
+        var gifduration = 900
+        var intervalID = setInterval(function() {
            neededData.timeonsite = new Date() - timeonload;
-           if (neededData.serverup && (neededData.timeonsite  % 900 === 0) && firsttime){
+           if (neededData.serverup && (Math.floor(neededData.timeonsite / 10) * 10  % gifduration === 0) && firsttime){
 
              $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
              firsttime = false;
              clearInterval(intervalID);
            }
-       }, 1);}
+       }, gifduration);}
 
 
 
