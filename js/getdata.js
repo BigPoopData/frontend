@@ -16,7 +16,7 @@ colorObject.openColor = 'rgba(46, 204, 113, ';
 colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
-var local = true;
+var local = false;
 
 if(local){
   serverData.websocketurl = "wss://bigpoopdata.com/ws";
@@ -54,8 +54,12 @@ this.waitForConnection = function(callback, interval) {
 //callback of response
 this.send("setup", function() {
     console.log('server is up');
-    $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
+    neededData.serverup = true;
+    //  $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
   });
+
+
+
 
 //executes on message from ws
 getData.onmessage = function(msg) {

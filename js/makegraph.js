@@ -312,6 +312,11 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
 
             scales: {
             yAxes: [{
+                min: 3,
+                ticks: {
+                                    min: 0,
+                                    max: 3600
+                                },
                 // display: false,
                 gridLines: {
                     display:false

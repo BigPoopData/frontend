@@ -274,6 +274,22 @@
     <script src="js/getdata.js"></script>
     <script src="js/countuptime.js"></script>
     <script>
+        var timeonload
+        var firsttime = true;
+        window.onload=function(){
+         timeonload = new Date();
+         var intervalID = setInterval(function() {
+           neededData.timeonsite = new Date() - timeonload;
+           if (neededData.serverup && (neededData.timeonsite  % 900 === 0) && firsttime){
+
+             $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
+             firsttime = false;
+             clearInterval(intervalID);
+           }
+       }, 1);}
+
+
+
         $("#scroll").click(function() {
 
             $('html, body').animate({
