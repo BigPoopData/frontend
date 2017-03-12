@@ -207,6 +207,7 @@ getData.onmessage = function(msg) {
         reset: false,
         delay: 100,
     }, 50);
+
 };
 
 //disconnect on windows close

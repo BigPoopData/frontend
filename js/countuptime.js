@@ -36,38 +36,37 @@ setInterval(function() {
         $("#hours").html('');
     }
 
-    //Statusmessages
-    // if (currentstatus) {
-    //     switch (true) {
-    //         case (sec < 30):
-    //             $("#statusmessage").html('"Go on, its free!"');
-    //             break;
-    //         case (sec < 120):
-    //             $("#statusmessage").html('"What are you waiting for"');
-    //             break;
-    //         case (sec < 500):
-    //             $("#statusmessage").html('"Come on in, theres even wifi"');
-    //             break;
-    //         case (sec < 800):
-    //             $("#statusmessage").html('"Testmessage"');
-    //             break;
-    //
-    //     }
-    //
-    // } else if (!currentstatus) {
-    //     switch (true) {
-    //         case (sec < 30):
-    //             $("#statusmessage").html('"This could take longer..."');
-    //             break;
-    //         case (sec < 120):
-    //             $("#statusmessage").html('Stay patient! We know you can do it!');
-    //             break;
-    //         case (sec < 500):
-    //             $("#statusmessage").html('Really taking his/her time!');
-    //             break;
-    //
-    //     }
-    // }
+    //landingpages
+    if (neededData.currentstatus) {
+        switch (true) {
+            case (sec > 800):
+                $(".statusmessage").text('"Get in there!"');
+                break;
+            case (sec > 500):
+                $(".statusmessage").text('"Come on in, theres even wifi"');
+                break;
+            case (sec > 120):
+                $(".statusmessage").text('"What are you waiting for"');
+                break;
+            case (sec < 30):
+                $(".statusmessage").text('"Go on, its free!"');
+                break;
+        }
+
+    } else if (!neededData.currentstatus) {
+        switch (true) {
+            case (sec > 500):
+                $(".statusmessage").text('Really taking his/her time!');
+                break;
+            case (sec > 120):
+                $(".statusmessage").text('Stay patient! We know you can do it!');
+                break;
+            case (sec < 30):
+                $(".statusmessage").text('"This could take longer..."');
+                break;
+
+        }
+    }
 }, 1000);
 
 function water() {

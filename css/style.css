@@ -28,6 +28,7 @@ section {
   color: grey;
   display: none
 }
+
 @media only screen and (max-width:768px) {
     section {
         padding: 0 15%;
@@ -36,6 +37,10 @@ section {
     .custom-columns {
         flex-direction: column-reverse;
         display: flex;
+  }
+
+  #toiletdata h1 {
+    white-space: normal !important;
   }
 
 
@@ -138,6 +143,7 @@ div #main-content {
 h1 {
     font-size: 4.2em;
     font-weight: 600;
+
 }
 
 h2 {
@@ -179,7 +185,7 @@ section {
     width: 100%;
 }
 
-#statusmessage {
+.statusmessage {
     transition: all 0.5s ease;
 }
 
@@ -199,12 +205,27 @@ section {
 
     /*position: relative;*/
 }
+#toiletdata h1 {
+  white-space: nowrap;
+}
+
 
 #watersavings {
     /*position: absolute;
     /*padding-top: 20vh;*/
     /*top: 25%;*/
 }
+
+/*#waternumbers {
+  white-space: nowrap;
+
+}
+
+#papernumbers {
+  white-space: nowrap;
+
+}*/
+
 
 #papersavings {
     padding-top: 10%;
