@@ -34,6 +34,10 @@
     <div class="se-pre-con">
     </div>
 
+    <div class="se-pre-con2">
+    </div>
+
+
     <section class="hero is-fullheight statuscolor" id="header">
         <div class="hero-head">
             <div class="container">
@@ -283,7 +287,11 @@
            neededData.timeonsite = new Date() - timeonload;
            if (neededData.serverup && (Math.floor(neededData.timeonsite / 10) * 10  % gifduration === 0) && firsttime){
 
-             $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
+            //  $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
+             $(".se-pre-con2").css("display", "block");    
+             $(".se-pre-con").css("display", "none");
+
+
              firsttime = false;
              clearInterval(intervalID);
            }

@@ -84,6 +84,22 @@ section {
     background-size: 60vw;
 }
 
+.se-pre-con2 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../img/loading_finish.gif) center no-repeat #fff;
+    /*background: center no-repeat #fff;*/
+    transition: background-image 0.1s ease;
+    display: none;
+
+    background-size: 60vw;
+}
+
+
 .se-pre-con-text {
     position: fixed;
     left: 0;
