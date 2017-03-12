@@ -37,35 +37,35 @@ setInterval(function() {
     }
 
     //landingpages
-    if (neededData.currentstatus) {
+    if (neededData.currentstatus === "false") {
+        switch (true) {
+            case (sec > 500):
+            $(".statusmessage").text('Really taking his/her time!');
+            break;
+            case (sec > 220):
+            $(".statusmessage").text('"This could take longer..."');
+            break;
+            case (sec < 100):
+            $(".statusmessage").text('Stay patient! We know you can do it!');
+            break;
+
+        }
+    } else if (neededData.currentstatus){
         switch (true) {
             case (sec > 800):
-                $(".statusmessage").text('"Get in there!"');
-                break;
+            $(".statusmessage").text('"Get in there!"');
+            break;
             case (sec > 500):
-                $(".statusmessage").text('"Come on in, theres even wifi"');
-                break;
+            $(".statusmessage").text('"Come on in, theres even wifi"');
+            break;
             case (sec > 120):
-                $(".statusmessage").text('"What are you waiting for"');
-                break;
+            $(".statusmessage").text('"What are you waiting for"');
+            break;
             case (sec < 30):
-                $(".statusmessage").text('"Go on, its free!"');
-                break;
+            $(".statusmessage").text('"Go on, its free!"');
+            break;
         }
 
-    } else if (neededData.currentstatus === false){
-        switch (true) {
-            case (sec > 500):
-                $(".statusmessage").text('Really taking his/her time!');
-                break;
-            case (sec > 120):
-                $(".statusmessage").text('Stay patient! We know you can do it!');
-                break;
-            case (sec < 30):
-                $(".statusmessage").text('"This could take longer..."');
-                break;
-
-        }
     }
 }, 1000);
 

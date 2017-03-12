@@ -16,7 +16,7 @@ colorObject.openColor = 'rgba(46, 204, 113, ';
 colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
-var local = false;
+var local = true;
 
 if(local){
   serverData.websocketurl = "wss://bigpoopdata.com/ws";
@@ -203,7 +203,7 @@ getData.onmessage = function(msg) {
     });
 
     //fadeout loading animation on load finish
-    $(".se-pre-con2").fadeOut("slow");
+    $(".se-pre-con").fadeOut("slow");
 
     $('#main-content').fadeIn("slow");
 

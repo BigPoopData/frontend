@@ -90,7 +90,6 @@ section {
     background: url(../img/loading_finish.gif) center no-repeat #fff;
     /*background: center no-repeat #fff;*/
     transition: background-image 0.1s ease;
-    display: none;
 
     background-size: 60vw;
 }
