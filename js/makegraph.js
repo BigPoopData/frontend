@@ -218,7 +218,7 @@ function twoInOneGraph(chartType, elementHTML, yAxis, yAxis2, xAxis, chartColor,
                     // }
 
                     label: function(tooltipItem, data) {
-                        var value = data.datasets[0].data[tooltipItem.index];
+                        var value = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
                         var label = data.labels[tooltipItem.index];
                         return label + data.datasets[tooltipItem.datasetIndex].label + " : " + value + " minutes";
 
