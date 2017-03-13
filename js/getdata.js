@@ -222,7 +222,7 @@ getData.onmessage = function(msg) {
     //interval Graph
     neededData.graph2 = universalGraph('bar', "myChart2", neededData.averagesPerMonthTimestamps, neededData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps, neededData.intervalsPerDayData, '#graphmenu2');
     //neededData.previousEvebtsGraph
-    neededData.graph3 = twoInOneGraph('radar', 'myChart3', neededData.usagePerHourAm, neededData.usagePerHourPm, neededData.oneToTwelve, colorObject.strongChartColor, colorObject.strongChartColor2, "easeInOutExpo");
+    neededData.graph3 = twoInOneGraph('radar', 'myChart3', neededData.usagePerHourAm, neededData.usagePerHourPm, neededData.oneToTwelve, colorObject.strongChartColor2, colorObject.strongChartColor, "easeInOutExpo");
 
     neededData.graph4 = lineInOneGraph('line', 'myChart4', neededData.totalEventsOpen, neededData.totalEventsClosed, colorObject.openColor + colorObject.alphaFull, colorObject.closedColor + colorObject.alphaFull, "easeInOutExpo");
 
