@@ -141,7 +141,7 @@ getData.onmessage = function(msg) {
                 }).fadeIn();
 
                 $("#author").fadeOut(function() {
-                    $(this).text('- ' + author);
+                    $(this).text(author);
                 }).fadeIn();
                 neededData.quotesArray.push(quote);
                 neededData.quotesAuthorArray.push(author);

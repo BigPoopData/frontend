@@ -343,6 +343,7 @@ p {
 
 #openclosedratio {
     padding-bottom: 2%;
+    margin-bottom: 5%;
 }
 
 .landingpage2 {
@@ -471,9 +472,14 @@ p {
 #author {
     padding-top: 2.5%;
     text-align: center;
+}
 
+#author::before {
+  content: "– ";
 }
 
 #quotes {
-    height:45%;
+  height: 20%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
