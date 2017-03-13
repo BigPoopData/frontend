@@ -31,7 +31,7 @@ section {
 @media only screen and (max-width:768px) {
     section {
         padding: 5% 15%;
-        margin-top: 20%;
+        margin-top: 15%;
     }
     .custom-columns {
         flex-direction: column-reverse;
