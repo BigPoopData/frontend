@@ -52,12 +52,16 @@ section {
     }
 
     h1 {
-        font-size: 3.2em;
+        font-size: 3.2em !important;
         font-weight: 600;
     }
 
+    #quote {
+      font-size: 1.4em !important;
+    }
+
     h2 {
-        font-size: 1em;
+        font-size: 1em !important;
     }
     #header, .footer {
       margin-top: 0;
