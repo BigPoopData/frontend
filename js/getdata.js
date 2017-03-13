@@ -121,7 +121,7 @@ getData.onmessage = function(msg) {
             neededData.timedurationelapsed = Math.floor(dateinterval / 1000);
             $('#totalminutes').text(Math.floor(serverData.total.duration.closed / 60 / 60 / 24 * 100) / 100 + ' days');
             $('#totalaverage').text(Math.floor(serverData.total.average.closed / 60 * 100) / 100 + ' minutes');
-            $('#totalintervals').text(serverData.total.intervals.closed + ' intervals');
+            $('#totalintervals').text(serverData.total.intervals.closed + ' visits');
             neededData.totalRecordingDays = Math.floor((new Date() - Date.parse(neededData.averagesPerDayObject[0].timestamp)) / 1000 / 60 / 60 / 24);
             $('#totaltimespan').text(neededData.totalRecordingDays + ' days');
 

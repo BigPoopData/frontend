@@ -31,6 +31,7 @@ section {
 @media only screen and (max-width:768px) {
     section {
         padding: 5% 15%;
+        margin-top: 10%;
     }
     .custom-columns {
         flex-direction: column-reverse;
@@ -43,6 +44,23 @@ section {
         display: block;
         margin-bottom: 5%;
         margin-top: 5%;
+    }
+
+    #quotes {
+      margin-top: 20%;
+      height: 45%;
+    }
+
+    h1 {
+        font-size: 3.2em;
+        font-weight: 600;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+    #header, .footer {
+      margin-top: 0;
     }
 }
 
@@ -145,6 +163,7 @@ div #main-content {
 h1 {
     font-size: 4.2em;
     font-weight: 600;
+    line-height: 1.2em;
 }
 
 h2 {
@@ -405,7 +424,7 @@ p {
 }
 
 .clickongraph {
-    padding-top: 40%;
+    padding-top: 30%;
 }
 
 #graphmenu1 {
@@ -465,8 +484,6 @@ p {
     text-align: center !important;
     font-size: 1.4em;
     width: 100%;
-
-
 }
 
 #author {
@@ -479,7 +496,14 @@ p {
 }
 
 #quotes {
-  height: 20%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 10%;
+  height: 30%;
+}
+
+.footer p {
+  padding-top: 0%;
+}
+
+.footer {
+  padding-bottom: 5%;
 }
