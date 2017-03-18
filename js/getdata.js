@@ -16,9 +16,9 @@ colorObject.openColor = 'rgba(46, 204, 113, ';
 colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
-var local = false;
+var PRODUCTION_READY = false;
 
-if (local) {
+if (!PRODUCTION_READY) {
     serverData.websocketurl = "wss://bigpoopdata.com/ws";
 } else {
     serverData.websocketurl = origin.replace(/^(https?):\/\//, "wss://") + "/ws";
@@ -172,14 +172,8 @@ getData.onmessage = function(msg) {
         case "true":
             colorObject.currentColor = colorObject.openColor + colorObject.alphaFull;
             colorObject.currentColorLessOpacity = colorObject.openColor + colorObject.alphaDown;
-            // colorObject.strongChartColor2 = 'rgba(46, 204, 113, 0.6)';
-            // colorObject.strongChartColor = 'rgba(171, 235, 198, 0.6)';
-
-            colorObject.strongChartColor2 = colorObject.currentColor;
-            colorObject.strongChartColor = colorObject.currentColorLessOpacity;
-
-
-
+            colorObject.strongChartColor2 = colorObject.currentColorLessOpacity;
+            colorObject.strongChartColor = colorObject.currentColor;
 
             $('#status').text('open');
             $('.statuscolor').css("background-color", colorObject.currentColor);
@@ -194,18 +188,13 @@ getData.onmessage = function(msg) {
         case "false":
             colorObject.currentColor = colorObject.closedColor + colorObject.alphaFull;
             colorObject.currentColorLessOpacity = colorObject.closedColor + colorObject.alphaDown;
-            // colorObject.strongChartColor2 = 'rgba(236, 74, 66, 0.6)';
-            // colorObject.strongChartColor = 'rgba(247, 182, 179, 0.6)';
-
-            colorObject.strongChartColor2 = colorObject.currentColor;
-            colorObject.strongChartColor = colorObject.currentColorLessOpacity;
-
+            colorObject.strongChartColor2 = colorObject.currentColorLessOpacity;
+            colorObject.strongChartColor = colorObject.currentColor;
 
             $('#status').text('occupied');
             $('.statuscolor').css("background-color", colorObject.currentColor);
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.currentbackgroundcolorfull').css("background-color", colorObject.currentColor);
-
             $('.currentbackgroundcolor').css("background-color", colorObject.currentColorLessOpacity);
             $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
     }

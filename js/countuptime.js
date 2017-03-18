@@ -10,7 +10,6 @@ function setTimerDurationElapsed(timeintevalarg) {
 }
 
 function pad(val) {
-
     return val;
 }
 
