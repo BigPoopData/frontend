@@ -33,6 +33,9 @@
     <!-- Lazy Loading picture -->
     <div class="se-pre-con">
     </div>
+    <div class="se-pre-con2">
+    </div>
+
 
 
     <section class="hero is-fullheight statuscolor" id="header">
@@ -183,7 +186,7 @@
             </div>
             <div class="column hourlyreveal">
                 <p>
-                    <h1 class="graphheadline">hourly averages</h1>
+                    <h1 class="graphheadline">hourly usage</h1>
                     <hr class="underline" size="10" align="left" />
 
                 </p>
@@ -297,6 +300,8 @@
     <script src="js/countuptime.js"></script>
     <script>
         window.onload = function() {
+
+            $(".se-pre-con2").css("background-image", "url(img/loading_finish.gif)");
             var timeonload = new Date();
             var firsttime = true;
             var gifduration = 900
@@ -304,9 +309,9 @@
                 neededData.timeonsite = new Date() - timeonload;
                 if (neededData.serverup && (Math.floor(neededData.timeonsite / 10) * 10 % gifduration === 0) && firsttime) {
 
-                    $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
-                    //  $(".se-pre-con").css("display", "none");
-                    //  $(".se-pre-con2").css("display", "block");
+                    // $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
+                     $(".se-pre-con").css("display", "none");
+                     $(".se-pre-con2").css("display", "block");
 
 
                     firsttime = false;

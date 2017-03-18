@@ -16,7 +16,7 @@ colorObject.openColor = 'rgba(46, 204, 113, ';
 colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
-var PRODUCTION_READY = false;
+var PRODUCTION_READY = true;
 
 if (!PRODUCTION_READY) {
     serverData.websocketurl = "wss://bigpoopdata.com/ws";
@@ -102,9 +102,12 @@ getData.onmessage = function(msg) {
             neededData.quotesAuthorArray = _.map(serverData.quotes, "author");
 
 
-            neededData.averagesPerMonthTimestamps = _.map(neededData.averagesPerMonthObject, 'timestamp');
-            neededData.averagesPerMonthData = _.map(neededData.averagesPerMonthObject, roundToMilliseconds);
-            neededData.intervalsPerMonthData = _.map(neededData.averagesPerMonthObject, 'intervals');
+            neededData.averagesPerMonthTimestamps =
+            _.map(neededData.averagesPerMonthObject, 'timestamp');
+            neededData.averagesPerMonthData =
+            _.map(neededData.averagesPerMonthObject, roundToMilliseconds);
+            neededData.intervalsPerMonthData =
+            _.map(neededData.averagesPerMonthObject, 'intervals');
 
             neededData.averagesPerDayTimestamps = _.map(neededData.averagesPerDayObject, 'timestamp');
             neededData.averagesPerDayData = _.map(neededData.averagesPerDayObject, roundToMilliseconds);
@@ -196,7 +199,7 @@ getData.onmessage = function(msg) {
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.currentbackgroundcolorfull').css("background-color", colorObject.currentColor);
             $('.currentbackgroundcolor').css("background-color", colorObject.currentColorLessOpacity);
-            $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
+            $('.currentcolor').css("color", colorObject.currentColor);
     }
 
     $('.amcolorbox').css("background-color", colorObject.strongChartColor);
@@ -234,7 +237,7 @@ getData.onmessage = function(msg) {
     });
 
     //fadeout loading animation on load finish
-    $(".se-pre-con").fadeOut("slow");
+    $(".se-pre-con2").fadeOut("slow");
 
     $('#main-content').fadeIn("slow");
 
