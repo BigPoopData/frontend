@@ -8,7 +8,6 @@ font-family: 'Montserrat', sans-serif;
 
 body:after{
     position:absolute; z-index:-1;
-    content: url(../img/loading_finish.gif);
 }
 
 html, body {
