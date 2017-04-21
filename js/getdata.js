@@ -102,12 +102,9 @@ getData.onmessage = function(msg) {
             neededData.quotesAuthorArray = _.map(serverData.quotes, "author");
 
 
-            neededData.averagesPerMonthTimestamps =
-            _.map(neededData.averagesPerMonthObject, 'timestamp');
-            neededData.averagesPerMonthData =
-            _.map(neededData.averagesPerMonthObject, roundToMilliseconds);
-            neededData.intervalsPerMonthData =
-            _.map(neededData.averagesPerMonthObject, 'intervals');
+            neededData.averagesPerMonthTimestamps = _.map(neededData.averagesPerMonthObject, 'timestamp');
+            neededData.averagesPerMonthData = _.map(neededData.averagesPerMonthObject, roundToMilliseconds);
+            neededData.intervalsPerMonthData = _.map(neededData.averagesPerMonthObject, 'intervals');
 
             neededData.averagesPerDayTimestamps = _.map(neededData.averagesPerDayObject, 'timestamp');
             neededData.averagesPerDayData = _.map(neededData.averagesPerDayObject, roundToMilliseconds);
@@ -199,7 +196,7 @@ getData.onmessage = function(msg) {
             $('.underline').css("background-color", colorObject.currentColorLessOpacity);
             $('.currentbackgroundcolorfull').css("background-color", colorObject.currentColor);
             $('.currentbackgroundcolor').css("background-color", colorObject.currentColorLessOpacity);
-            $('.currentcolor').css("color", colorObject.currentColor);
+            $('.currentcolor').css("color", colorObject.currentColorLessOpacity);
     }
 
     $('.amcolorbox').css("background-color", colorObject.strongChartColor);
