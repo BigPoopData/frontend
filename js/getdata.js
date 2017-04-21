@@ -18,12 +18,12 @@ colorObject.alphaDown = '0.4)';
 
 var PRODUCTION_READY = true;
 
-// if (!PRODUCTION_READY) {
-//     serverData.websocketurl = "wss://bigpoopdata.com/ws";
-// } else {
+if (!PRODUCTION_READY) {
+    serverData.websocketurl = "wss://bigpoopdata.com/ws";
+} else {
     serverData.websocketurl = origin.replace(/^(https?):\/\//, "wss://") + "/ws";
 
-// }
+}
 //connect to websocket
 var getData = new WebSocket(serverData.websocketurl);
 
@@ -237,7 +237,7 @@ getData.onmessage = function(msg) {
     });
 
     //fadeout loading animation on load finish
-    $(".se-pre-con").fadeOut("slow");
+    $(".loadingwrapper").fadeOut("slow");
 
     $('#main-content').fadeIn("slow");
 

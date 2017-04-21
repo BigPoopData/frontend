@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900');
 font-family: 'Montserrat', sans-serif;
-
 * {
     margin: 0;
     padding: 0;
-}
-
-body:after{
-    position:absolute; z-index:-1;
-    content: url(../img/loading_finish.gif);
 }
 
 html, body {
@@ -51,26 +45,22 @@ section {
         margin-bottom: 5%;
         margin-top: 5%;
     }
-
     #quotes {
-      margin-top: 20%;
-      height: 45%;
+        margin-top: 20%;
+        height: 45%;
     }
-
     h1 {
         font-size: 3.2em !important;
         font-weight: 600;
     }
-
     #quote {
-      font-size: 1.4em !important;
+        font-size: 1.4em !important;
     }
-
     h2 {
         font-size: 1em !important;
     }
     #header, .footer {
-      margin-top: 0;
+        margin-top: 0;
     }
 }
 
@@ -86,38 +76,39 @@ section {
 }
 
 .se-pre-con {
-    position: fixed;
-    left: 0;
+    position: absolute;
+    margin: auto;
     top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url(../img/loading_loop.gif) center no-repeat #fff;
-    /*background: center no-repeat #fff;*/
-    transition: background-image 0.1s ease;
-    background-size: 60vw;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 60vw;
+    height: auto;
+    padding: 0;
 }
 
 .se-pre-con2 {
-    position: fixed;
-    left: 0;
+    position: absolute;
+    margin: auto;
     top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 60vw;
+        height: auto;
+    padding: 0;
     display: none;
-    background: center no-repeat #fff;
-    transition: background-image 0.1s ease;
-    background-size: 60vw;
 }
 
-.se-pre-con-text {
+.loadingwrapper {
     position: fixed;
-    left: 0;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 99999;
     height: 100%;
-    z-index: 9999;
 }
 
 div #main-content {
@@ -502,18 +493,18 @@ p {
 }
 
 #author::before {
-  content: "– ";
+    content: "– ";
 }
 
 #quotes {
-  margin-top: 10%;
-  height: 30%;
+    margin-top: 10%;
+    height: 30%;
 }
 
 .footer p {
-  padding-top: 0%;
+    padding-top: 0%;
 }
 
 .footer {
-  padding-bottom: 5%;
+    padding-bottom: 5%;
 }
