@@ -51,17 +51,21 @@ setInterval(function() {
         }
     } else if (neededData.currentstatus){
         switch (true) {
+            case (sec > 36000):
+            $(".statusmessage").text('"First one of the day"');
+            break;
+
             case (sec > 800):
-            $(".statusmessage").text('"Get in there!"');
+            $(".statusmessage").text('"Get in there"');
             break;
             case (sec > 500):
-            $(".statusmessage").text('"Come on in, theres even wifi"');
+            $(".statusmessage").text('"Come on in, theres even free wifi"');
             break;
             case (sec > 120):
             $(".statusmessage").text('"What are you waiting for"');
             break;
             case (sec < 30):
-            $(".statusmessage").text('"Go on, its free!"');
+            $(".statusmessage").text('"Go on, its free"');
             break;
         }
 
