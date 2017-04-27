@@ -16,7 +16,7 @@ colorObject.openColor = 'rgba(46, 204, 113, ';
 colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
-var PRODUCTION_READY = true;
+var PRODUCTION_READY = false;
 
 if (!PRODUCTION_READY) {
     serverData.websocketurl = "wss://bigpoopdata.com/ws";

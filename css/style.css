@@ -54,8 +54,13 @@ section {
         font-weight: 600;
     }
     #quote {
-        font-size: 1.4em !important;
+        font-size: 1em !important;
     }
+
+    #author {
+        font-size: 0.9em;
+    }
+
     h2 {
         font-size: 1em !important;
     }
