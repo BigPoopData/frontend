@@ -16,7 +16,7 @@ colorObject.openColor = 'rgba(46, 204, 113, ';
 colorObject.alphaFull = '1.0)';
 colorObject.alphaDown = '0.4)';
 
-var PRODUCTION_READY = false;
+var PRODUCTION_READY = true;
 
 if (!PRODUCTION_READY) {
     serverData.websocketurl = "wss://bigpoopdata.com/ws";
@@ -25,12 +25,12 @@ if (!PRODUCTION_READY) {
 
 }
 //connect to websocket
-var getData = new WebSocket(serverData.websocketurl);
+var ws = new ReconnectingWebSocket(serverData.websocketurl);
 
 //send setup message
 this.send = function(message, callback) {
     this.waitForConnection(function() {
-        getData.send(message);
+        ws.send(message);
         if (typeof callback !== 'undefined') {
             callback();
         }
@@ -39,7 +39,7 @@ this.send = function(message, callback) {
 
 //wait until response
 this.waitForConnection = function(callback, interval) {
-    if (getData.readyState === 1) {
+    if (ws.readyState === 1) {
         callback();
     } else {
         var that = this;
@@ -60,7 +60,7 @@ this.send("setup", function() {
 
 
 //executes on message from ws
-getData.onmessage = function(msg) {
+ws.onmessage = function(msg) {
     serverData = JSON.parse(msg.data);
     switch (serverData.name) {
         case "FullObject":
@@ -243,11 +243,9 @@ getData.onmessage = function(msg) {
         reset: false,
         delay: 100,
     }, 50);
-
 };
 
 //disconnect on windows close
 window.onbeforeunload = function() {
-    websocket.onclose = function() {}; // disable onclose handler first
-    websocket.close();
+    ws.close();
 };
