@@ -50,7 +50,7 @@ this.waitForConnection = function(callback, interval) {
 };
 
 //callback of response
-this.send("setup", function() {
+this.send(JSON.stringify({command: "setup", kloName: "sitzklo"}), function() {
     console.log('server is up');
     neededData.serverup = true;
     //  $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
@@ -234,7 +234,7 @@ ws.onmessage = function(msg) {
     });
 
     //fadeout loading animation on load finish
-    $(".loadingwrapper").fadeOut("fast");
+    $(".loadingwrapper").fadeOut("slow");
 
     $('#main-content').fadeIn("slow");
 
