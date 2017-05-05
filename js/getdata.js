@@ -25,12 +25,12 @@ if (!PRODUCTION_READY) {
 
 }
 //connect to websocket
-var ws = new ReconnectingWebSocket(serverData.websocketurl);
+var getData = new WebSocket(serverData.websocketurl);
 
 //send setup message
 this.send = function(message, callback) {
     this.waitForConnection(function() {
-        ws.send(message);
+        getData.send(message);
         if (typeof callback !== 'undefined') {
             callback();
         }
@@ -39,7 +39,7 @@ this.send = function(message, callback) {
 
 //wait until response
 this.waitForConnection = function(callback, interval) {
-    if (ws.readyState === 1) {
+    if (getData.readyState === 1) {
         callback();
     } else {
         var that = this;
@@ -56,11 +56,8 @@ this.send(JSON.stringify({command: "setup", kloName: "sitzklo"}), function() {
     //  $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
 });
 
-
-
-
 //executes on message from ws
-ws.onmessage = function(msg) {
+getData.onmessage = function(msg) {
     serverData = JSON.parse(msg.data);
     switch (serverData.name) {
         case "FullObject":
@@ -243,9 +240,11 @@ ws.onmessage = function(msg) {
         reset: false,
         delay: 100,
     }, 50);
+
 };
 
 //disconnect on windows close
 window.onbeforeunload = function() {
-    ws.close();
+    websocket.onclose = function() {}; // disable onclose handler first
+    websocket.close();
 };
