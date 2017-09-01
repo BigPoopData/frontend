@@ -103,32 +103,3 @@ function rolls() {
 }
 
 
-$(document).ready(function() {
-
-    var sroptions = {
-        duration: 500,
-        reset: true,
-        viewOffset: {
-            top: -100,
-            right: 0,
-            bottom: -100,
-            left: 0,
-        },
-    };
-
-    window.sr = ScrollReveal().reveal();
-
-    sr.reveal('.revealonscroll', sroptions);
-
-    sr.reveal('.averagesreveal', sroptions, 100);
-
-    sr.reveal('.intervalsreveal', sroptions, 100);
-
-    sr.reveal('.hourlyreveal', sroptions, 100);
-
-    sr.reveal('.lasteventsreveal', sroptions, 100);
-
-
-    sr.reveal('.closedopenreveal', sroptions, 200);
-
-});

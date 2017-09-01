@@ -53,8 +53,16 @@ this.waitForConnection = function(callback, interval) {
 this.send(JSON.stringify({command: "setup", kloName: "sitzklo"}), function() {
     console.log('server is up');
     neededData.serverup = true;
-    //  $(".se-pre-con").css("background-image", "url(img/loading_finish.gif)");
 });
+
+
+function resetCanvas(canvasElement, canvasParent) {
+    // $(canvasElement).remove();
+    // console.log(canvasParent)
+    $('#' + canvasParent).empty();
+    $('#' + canvasParent).append('<canvas id="' + canvasElement + '"><canvas>');
+  };
+  
 
 //executes on message from ws
 getData.onmessage = function(msg) {
@@ -122,8 +130,6 @@ getData.onmessage = function(msg) {
             neededData.totalRecordingDays = Math.floor((new Date() - Date.parse(neededData.averagesPerDayObject[0].timestamp)) / 1000 / 60 / 60 / 24);
             $('#totaltimespan').text(neededData.totalRecordingDays + ' days');
 
-            console.log(serverData);
-
             waterusage = serverData.totalIntervals * 9;
             paperusage = Math.floor(serverData.total.toiletPaperUsage.value * 100) / 100;
 
@@ -157,9 +163,13 @@ getData.onmessage = function(msg) {
             neededData.graph2.destroy();
             neededData.graph3.destroy();
             neededData.graph4.destroy();
+            resetCanvas('mychart', 'chartcontent')
+            resetCanvas('mychart2', 'chartcontent2')
+            resetCanvas('mychart3', 'chartcontent3')
+            resetCanvas('mychart4', 'chartcontent4')
+            
             break;
     }
-
 
     setTimerDurationElapsed(neededData.timedurationelapsed);
 
@@ -204,13 +214,13 @@ getData.onmessage = function(msg) {
     //universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY);
     //polarArea
     //average Graph
-    neededData.graph1 = universalGraph('bar', "myChart", neededData.averagesPerMonthTimestamps, neededData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps, neededData.averagesPerDayData, '#graphmenu1');
+    neededData.graph1 = universalGraph('bar', "myChart", neededData.averagesPerMonthTimestamps, neededData.averagesPerMonthData, "minutes", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", 'chartcontent', neededData.averagesPerDayTimestamps, neededData.averagesPerDayData, '#graphmenu1');
     //interval Graph
-    neededData.graph2 = universalGraph('bar', "myChart2", neededData.averagesPerMonthTimestamps, neededData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", neededData.averagesPerDayTimestamps, neededData.intervalsPerDayData, '#graphmenu2');
+    neededData.graph2 = universalGraph('bar', "myChart2", neededData.averagesPerMonthTimestamps, neededData.intervalsPerMonthData, "visits", colorObject.currentColorLessOpacity, true, colorObject.currentColor, "easeInOutExpo", 'chartcontent2', neededData.averagesPerDayTimestamps, neededData.intervalsPerDayData, '#graphmenu2');
     //neededData.previousEvebtsGraph
-    neededData.graph3 = twoInOneGraph('radar', 'myChart3', neededData.usagePerHourAm, neededData.usagePerHourPm, neededData.oneToTwelve, colorObject.strongChartColor2, colorObject.strongChartColor, "easeInOutExpo");
-
-    neededData.graph4 = lineInOneGraph('line', 'myChart4', neededData.totalEventsOpen, neededData.totalEventsClosed, colorObject.openColor + colorObject.alphaFull, colorObject.closedColor + colorObject.alphaFull, "easeInOutExpo");
+    neededData.graph3 = twoInOneGraph('radar', 'myChart3', neededData.usagePerHourAm, neededData.usagePerHourPm, neededData.oneToTwelve, colorObject.strongChartColor2, colorObject.strongChartColor, "easeInOutExpo", 'chartcontent3');
+    //line Graph
+    neededData.graph4 = lineInOneGraph('line', 'myChart4', neededData.totalEventsOpen, neededData.totalEventsClosed, colorObject.openColor + colorObject.alphaFull, colorObject.closedColor + colorObject.alphaFull, "easeInOutExpo", 'chartcontent4');
 
     //closed open interval
     closedopenGraph(neededData.openPercentageGraphValue, neededData.closedPercentageGraphValue, neededData.closedPercentage);
@@ -221,11 +231,9 @@ getData.onmessage = function(msg) {
     var waypoint = new Waypoint({
         element: document.getElementById('toiletdata'),
         handler: function(direction) {
-            if (firstscroll === 0) {
                 water();
                 rolls();
                 firstscroll++;
-            }
         },
         offset: '80%',
     });
@@ -235,12 +243,6 @@ getData.onmessage = function(msg) {
 
     $('#main-content').fadeIn("slow");
 
-    sr.reveal('.landingpage', {
-        duration: 500,
-        reset: false,
-        delay: 100,
-    }, 50);
-
 };
 
 //disconnect on windows close
@@ -248,3 +250,4 @@ window.onbeforeunload = function() {
     websocket.onclose = function() {}; // disable onclose handler first
     websocket.close();
 };
+

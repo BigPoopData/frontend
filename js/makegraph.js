@@ -61,7 +61,7 @@ function closedopenGraph(val1, val2, displayedPercentage) {
 }
 
 
-function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu) {
+function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, elementWrapper, lowerLevelGraphX, lowerLevelGraphY, graphmenu) {
     var lineChartData = {
         labels: xAxis,
         scaleShowVerticalLines: true,
@@ -168,7 +168,8 @@ function universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, ch
 
     $(graphmenu).click(function() {
         graph.destroy();
-        graph = universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, lowerLevelGraphX, lowerLevelGraphY, graphmenu);
+        resetCanvas(elementHTML, elementWrapper);
+        graph = universalGraph(chartType, elementHTML, xAxis, yAxis, tooltipMessage, chartColor, chartHoverActive, chartHoverColor, animationEasing, 'null', lowerLevelGraphX, lowerLevelGraphY, graphmenu);
         $(graphmenu).fadeOut('slow');
     });
     return graph;
@@ -263,8 +264,7 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
             label: 'Open',
             backgroundColor: 'transparent',
             showLine: false,
-            pointBackgroundColor: chartColor,
-
+            pointBackgroundColor: chartColor
             },{
             type: chartType,
             data: data2,
@@ -283,39 +283,33 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
         data: lineChartData,
         options: {
             tooltips: {
-                            enabled: true,
-                            mode: 'single',
-                            callbacks: {
-                                label: function(tooltipItems, data) {
+                enabled: true,
+                mode: 'single',
+                callbacks: {
+                label: function(tooltipItems, data) {
+                    var value = data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index];
+                    if (value.y > 60) {
+                        endvalue = Math.floor(value.y / 60 % 60 * 100) / 100 + " hours";
+                    } else {
+                        endvalue = value.y + " minutes";
+                    }
 
-
-                                    var value = data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index];
-                                    if (value.y > 60) {
-                                        endvalue = Math.floor(value.y / 60 % 60 * 100) / 100 + " hours";
-                                    } else {
-                                        endvalue = value.y + " minutes";
-                                    }
-
-                                    var label = data.labels[tooltipItems.index];
-                                    return data.datasets[tooltipItems.datasetIndex].label + " for " + endvalue;
-                                }
-                            }
-                        },
+                    var label = data.labels[tooltipItems.index];
+                        return data.datasets[tooltipItems.datasetIndex].label + " for " + endvalue;
+                    }
+                }
+            },
             animation: {
                 easing: animationEasing
             },
-            scale:{
-                ticks: {
-                    beginAtZero: false
-                }
-            },
+            
 
             scales: {
             yAxes: [{
                 ticks: {
-                                    min: 0,
-                                    max: 3600
-                                },
+                    min: 0,
+                    max: 3600
+                },
                 display: false,
                 gridLines: {
                     display:false
@@ -348,7 +342,7 @@ function lineInOneGraph(chartType, elementHTML, data1, data2, chartColor, chartC
             },
             legend: {
                 display: true,
-            },
+            }
         }
     );
 

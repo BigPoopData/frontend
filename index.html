@@ -88,7 +88,7 @@
     <section id="lastevents">
         <div class="columns custom-columns">
             <div class="column is-two-thirds lasteventsreveal">
-                <div class="">
+                <div class="" id="chartcontent4">
                     <div class="chartcontent">
                         <canvas id="myChart4"></canvas>
                     </div>
@@ -163,7 +163,7 @@
                     <a class="currentcolor" id="graphmenu1">🠜 back to months</a>
                 </div>
 
-                <div class="chartWrapper">
+                <div class="chartWrapper" id="chartcontent">
                     <div class="chartcontent">
                         <canvas id="myChart"></canvas>
                     </div>
@@ -178,7 +178,7 @@
         <div class="columns custom-columns">
             <div class="column is-two-thirds hourlyreveal">
 
-                <div class="chartWrapper">
+                <div class="chartWrapper" id="chartcontent3">
                     <div class="chartcontent">
                         <canvas id="myChart3"></canvas>
                     </div>
@@ -229,7 +229,7 @@
                 <div class="graphmenuwrapper">
                     <a class="currentcolor" id="graphmenu2">🠜 back to months</a>
                 </div>
-                <div class="chartWrapper">
+                <div class="chartWrapper" id="chartcontent2">
                     <div class="chartcontent">
                         <canvas id="myChart2"></canvas>
                     </div>
@@ -281,13 +281,11 @@
     </section>
 
     <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="js/lib/lodash.min.js"></script>
-    <script src="js/lib/jquery.scrollTo.min.js"></script>
-    <script src="js/lib/charts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="js/lib/chartist.min.js"></script>
     <script src="js/lib/chartist-plugin-fill-donut.min.js"></script>
     <script src="js/lib/waypoint.js"></script>
